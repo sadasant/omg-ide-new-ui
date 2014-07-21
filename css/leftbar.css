@@ -1,0 +1,10 @@
+/* Left Bar's css */
+
+#left-bar {
+    height:     100%;
+    width:      50px;
+    background: #37a;
+    position:   absolute;
+    top:        0;
+    left:       0;
+}
