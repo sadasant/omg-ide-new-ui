@@ -1,10 +1,38 @@
 /* Left Bar's css */
 
 #left-bar {
-    height:     100%;
-    width:      50px;
-    background: #37a;
-    position:   absolute;
-    top:        0;
-    left:       0;
+    height:       100%;
+    width:        50px;
+    background:   #37a;
+    top:          0;
+    left:         0;
+    border-right: 1px solid #069;
+    box-shadow:   inset -1px 0 1px rgba(255,255,255,.2);
+    text-align:   center;
+}
+
+.left-bar-logo {
+    margin-top:        4px;
+    margin-left:       4px;
+    width:             34px;
+    height:            34px;
+    display:           inline-block;
+    background-image:  url(../img/cw-logo-left-bar.png);
+    background-size:   cover;
+    background-repeat: no-repeat;
+}
+
+/* entypo */
+#left-bar [class*="entypo-"]:before {
+    font-size: 22px;
+    color:     #a1b8ca;
+    display:   block;
+    padding:   10px 0;
+}
+#left-bar [class*="entypo-"] {
+    width:  auto;
+    cursor: pointer;
+}
+#left-bar [class*="entypo-"]:hover:before {
+    color: white;
 }
