@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/entypo.css"/>
 	<link rel="stylesheet" href="css/etc.css"/>
 	<link rel="stylesheet" href="css/leftblock.css"/>
+	<link rel="stylesheet" href="css/chat.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
 </head>
 <body>
@@ -88,8 +89,27 @@
 				<div class="title">Settings</div>
 			</div>
 
-			<div class="content content-Chat">
-				<div class="title">Chat</div>
+			<div class="content content-Chat" id="chat">
+				<div class="active-users no-select">
+					<ul>
+						<li>            <div class="bullet" style="background-color:#f33;"></div><div class="position">Line 3, column 10.</div></li>
+						<li>            <div class="bullet" style="background-color:#3f3;"></div><div class="position">Line 21, column 0.</div></li>
+						<li class="you"><div class="bullet" style="background-color:#33f;"></div><div class="position">Line 5, column 5.</div></li>
+					</ul>
+				</div>
+				<div class="conversation select">
+					<div class="message select" style="border-left-color:#33f;">Hey!</div>
+					<div class="message select" style="border-left-color:#3f3;">Hey brotha!</div>
+					<div class="message select" style="border-left-color:#f33;">How are you, guys?</div>
+					<div class="message select" style="border-left-color:#3f3;">Everything ok here</div>
+					<div class="message select" style="border-left-color:#3f3;">:D</div>
+					<div class="message select" style="border-left-color:#33f;">All good!</div>
+					<div class="message select" style="border-left-color:#f33;">Perfect!</div>
+				</div>
+				<div class="submit-form">
+					<textarea></textarea>
+					<button><div class="entypo-reply"></div></button>
+				</div>
 			</div>
 
 		</div>

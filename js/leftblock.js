@@ -1,17 +1,25 @@
 $(window).ready(function() {
 
-    var $window        = $(window);
-    var $block         = $("#left-block");
-    var $bar           = $("#left-bar");
-    var $panel         = $("#left-panel");
-    var $buttons       = $bar.find('[class*="entypo-"]');
-    var $popup         = $panel.find(".entypo-popup");
+    var $window  = $(window);
+    var $body    = $(document.body);
+    var $block   = $("#left-block");
+    var $bar     = $("#left-bar");
+    var $panel   = $("#left-panel");
+    var $buttons = $bar.find('[class*="entypo-"]');
+    var $popup   = $panel.find(".entypo-popup");
+
+    var css_blue_border = "1px solid #a1b8ca";
 
     $window.resize(resize);
 
     function resize() {
-        $bar.height($window.height());
-        $panel.height($window.height());
+        var b_height = $body.height();
+        var w_height = $window.height();
+        var height   = b_height > w_height ? b_height : w_height;
+        $block.height(height);
+        $bar.height(height);
+        $panel.height(height);
+        $body.height(height);
     }
 
     resize();
@@ -38,7 +46,7 @@ $(window).ready(function() {
             $content.find(".unpop").remove();
             $content.removeClass("popup");
             $content.off("mousedown", onMouseDown);
-            $block.css({ borderRight: "1px solid #37a"});
+            $block.css({ borderRight: css_blue_border});
             $panel.css({ width: 300 }, 300);
         }
 
@@ -59,7 +67,7 @@ $(window).ready(function() {
     });
 
     function openPanel(text) {
-        $block.css({ borderRight: "1px solid #37a"});
+        $block.css({ borderRight: css_blue_border});
         $panel.animate({ width: 300 }, 300, function() {
             $panel.find(".content-"+text).show();
             $popup.show().data("active", text);
@@ -110,6 +118,9 @@ $(window).ready(function() {
         function onMouseMove(e) {
             if ($this.data("stopMouseMove")) {
                 $window.off("mousemove", onMouseMove);
+                return;
+            }
+            if ($(e.target).hasClass("select")) {
                 return;
             }
             mouse.x = e.clientX;
