@@ -1,1 +1,1 @@
-web: doppel_heroku
+web: index.js
