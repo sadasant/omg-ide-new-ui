@@ -1,0 +1,16 @@
+{
+    "name": "",
+    "description": "",
+    "version": "0.1.0",
+    "homepage" : "",
+    "engines": {"node": "v0.10.12"},
+    "author": "Daniel Rodríguez <sadasant@cloudwalk.io>",
+    "main": "src",
+    "repository" : {
+        "type" : "git",
+         "url" : ""
+    },
+    "dependencies": {
+        "connect" : "2.9.0"
+    }
+}
