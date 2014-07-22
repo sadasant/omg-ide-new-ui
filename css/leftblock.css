@@ -5,16 +5,6 @@
     display:       inline-block;
 }
 
-.left-excess {
-    width:      50px;
-    height:     100%;
-    background: #37a;
-    position:   fixed;
-    top:        0;
-    left:       0;
-    z-index:    -10;
-}
-
 #left-bar {
     height:       100%;
     width:        50px;
@@ -71,9 +61,22 @@
 }
 
 #left-panel {
-    width:    0;
-    overflow: hidden;
-    float:    left;
+    width:      0;
+    overflow-y: hidden;
+    float:      left;
+}
+
+#left-panel .entypo-popup {
+    position:    absolute;
+    top:         12px;
+    margin-left: 270px;
+    display:     none;
+    color:       #CCC;
+}
+
+#left-panel .entypo-popup:hover {
+    color:  #37a;
+    cursor: pointer;
 }
 
 #left-panel .content {
@@ -83,4 +86,25 @@
 }
 
 #left-panel .content .title {
+}
+
+#left-panel .popup {
+    background:    white;
+    position:      fixed;
+    min-width:     100px;
+    min-height:    100px;
+    border:        1px solid #a1b8ca;
+    border-radius: 4px;
+}
+
+#left-panel .popup.dropshadow {
+    box-shadow: -1px 4px 6px rgba(0,0,0,.1);
+}
+
+#left-panel .popup .unpop {
+    position:    absolute;
+    margin-left: 114px;
+    margin-top:  -25px;
+    color:       #CCC;
+    cursor:      pointer;
 }
