@@ -1,0 +1,77 @@
+/* Left Block's css */
+
+#left-block {
+    height:        100%;
+    display:       inline-block;
+    margin-bottom: -5px;
+}
+
+#left-bar {
+    height:       100%;
+    width:        50px;
+    background:   #37a;
+    top:          0;
+    left:         0;
+    text-align:   center;
+    display:      block;
+    float:        left;
+    box-shadow:   inset -1px 0 1px rgba(255,255,255,.2);
+}
+
+.left-bar-logo {
+    margin-top:        10px;
+    margin-bottom:     4px;
+    margin-left:       0px;
+    width:             34px;
+    height:            34px;
+    display:           inline-block;
+    background-image:  url(../img/cw-logo-left-bar.png);
+    background-size:   cover;
+    background-repeat: no-repeat;
+}
+
+/* entypo */
+#left-bar [class*="entypo-"]:before {
+    font-size: 22px;
+    color:     #a1b8ca;
+    display:   inline-block;
+    padding:   10px 0;
+}
+#left-bar [class*="entypo-"].ide-alert:before {
+    color: #fc4;
+}
+#left-bar [class*="entypo-"] {
+    width:  auto;
+    cursor: pointer;
+}
+#left-bar [class*="entypo-"]:hover:before {
+    color: white;
+}
+
+#left-bar [class*="entypo-"].active:before {
+    color:          #37a;
+    width:          45px;
+    height:         15px;
+    padding-top:    3px;
+    padding-bottom: 13px;
+    margin-top:     5px;
+    margin-left:    5px;
+    margin-bottom:  8px;
+    background:     white;
+    border-radius:  20px 0 0 20px;
+}
+
+#left-panel {
+    width:    0;
+    overflow: hidden;
+    float:    left;
+}
+
+#left-panel .content {
+    display: none;
+    padding: 30px;
+    color:   #444;
+}
+
+#left-panel .content .title {
+}
