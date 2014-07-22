@@ -4,7 +4,6 @@ $(window).ready(function() {
     var $block         = $("#left-block");
     var $bar           = $("#left-bar");
     var $panel         = $("#left-panel");
-    var $panel_content = $("#left-panel .content");
     var $buttons       = $bar.find('[class*="entypo-"]');
 
     $window.resize(resize);
@@ -16,31 +15,50 @@ $(window).ready(function() {
 
     resize();
 
-    $buttons.click(function() {
-        var $this = $(this);
+    var busy    = false;
+    var is_open = false;
 
-        if ($this.hasClass("active")) {
-            $buttons.removeClass("active");
+    $buttons.click(function() {
+        if (busy) return;
+        busy = true;
+
+        var $this = $(this);
+        var is_active = $this.hasClass("active");
+
+        $panel.find('.content').hide();
+        $buttons.removeClass("active");
+
+        if (is_active) {
             closePanel();
             return;
         }
 
-        $buttons.removeClass("active");
+        var text = $this.find(".tooltip-right").text();
+
         $this.toggleClass("active");
-        openPanel();
+
+        if (is_open) {
+            $panel.find(".content-"+text).show();
+            busy = false;
+        } else {
+            openPanel(text);
+        }
     });
 
-    function openPanel() {
+    function openPanel(text) {
         $block.css({ borderRight: "1px solid #37a"});
         $panel.animate({ width: 300 }, 300, function() {
-            $panel_content.show();
+            $panel.find(".content-"+text).show();
+            is_open = true;
+            busy    = false;
         });
     }
 
     function closePanel() {
-        $panel_content.hide();
         $panel.animate({ width: 0 }, 300, function() {
             $block.css({ borderRight: "none"});
+            is_open = false;
+            busy    = false;
         });
     }
 
