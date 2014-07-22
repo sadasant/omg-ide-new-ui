@@ -4,15 +4,19 @@
 #chat .active-users {
     border-bottom:  1px solid #eee;
     padding-bottom: 10px;
+    display:        block;
+    height:         50px;
 }
 
 #chat .active-users li {
-    display:     inline-block;
-    clear:       both;
-    width:       100%;
-    font-size:   10px;
-    color:       #888;
-    line-height: 14px;
+    display:       inline-block;
+    float:         left;
+    clear:         both;
+    width:         248px;
+    font-size:     10px;
+    color:         #888;
+    line-height:   14px;
+    margin-bottom: 3px;
 }
 
 #chat .active-users .bullet {
@@ -33,13 +37,13 @@
     background:    #ff9;
     position:      absolute;
     margin-top:    -14px;
-    margin-left:   231px;
+    margin-left:   209px;
     padding:       0 10px;
     border-radius: 0 10px 10px 0;
     color:         #aa2;
 }
 #chat.popup .active-users li.you:after {
-    margin-left: 233px;
+    margin-left: 211px;
 }
 
 #chat .conversation {
