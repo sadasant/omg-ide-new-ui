@@ -9,6 +9,7 @@
 /* tooltip */
 [class*="entypo-"]:hover .tooltip-right {
     display: block;
+    z-index: 10;
 }
 [class*="entypo-"] .tooltip-right:before {
     content:      "";

@@ -1,0 +1,68 @@
+$(window).ready(function() {
+
+    var $window = $(window);
+    var $body   = $(document.body);
+    var $editor = $("#editor");
+
+    var editor  = ace.edit("editor");
+    var session = editor.getSession();
+
+    editor.setTheme("ace/theme/github");
+    editor.setFontSize("13px");
+    editor.setShowPrintMargin(false);
+    session.setUseSoftTabs(true);
+    session.setTabSize(2);
+
+    session.setMode("ace/mode/ruby");
+
+    $window.resize(resize);
+
+    function resize() {
+        var b_height = $body.height();
+        var w_height = $window.height();
+        var height   = b_height > w_height ? b_height : w_height;
+        $editor.height(height);
+    }
+
+    resize();
+
+    editor.setValue(
+"#!/usr/bin/ruby\n"+
+"\n"+
+"# Program to find the factorial of a number\n"+
+"def fact(n)\n"+
+"    if n == 0\n"+
+"        1\n"+
+"    else\n"+
+"        n * fact(n-1)\n"+
+"    end\n"+
+"end\n"+
+"\n"+
+"puts fact(ARGV[0].to_i)\n"+
+"\n"+
+"class Range\n"+
+"  def to_json(*a)\n"+
+"    {\n"+
+"      'json_class'   => self.class.name, # = 'Range'\n"+
+"      'data'         => [ first, last, exclude_end? ]\n"+
+"    }.to_json(*a)\n"+
+"  end\n"+
+"end\n"+
+"\n"+
+"{:id => 34, :key => \"value\"}\n"+
+"\n"+
+"\n"+
+"    herDocs = [<<'FOO', <<BAR, <<-BAZ, <<-`EXEC`] #comment\n"+
+"  FOO #{literal}\n"+
+"FOO\n"+
+"  BAR #{fact(10)}\n"+
+"BAR\n"+
+"  BAZ indented\n"+
+"    BAZ\n"+
+"        echo hi\n"+
+"    EXEC\n"+
+"puts herDocs");
+
+    editor.clearSelection();
+
+});

@@ -7,6 +7,10 @@ $(window).ready(function() {
     var $panel   = $("#left-panel");
     var $buttons = $bar.find('[class*="entypo-"]');
     var $popup   = $panel.find(".entypo-popup");
+    var $editor  = $("#editor");
+
+    var bar_width        = 50;
+    var panel_open_width = 351;
 
     var css_blue_border = "1px solid #a1b8ca";
 
@@ -48,6 +52,7 @@ $(window).ready(function() {
             $content.off("mousedown", onMouseDown);
             $block.css({ borderRight: css_blue_border});
             $panel.css({ width: 300 }, 300);
+            $editor.css({ left: panel_open_width });
         }
 
         if (is_active) {
@@ -68,7 +73,12 @@ $(window).ready(function() {
 
     function openPanel(text) {
         $block.css({ borderRight: css_blue_border});
+        $editor.animate({ left: panel_open_width }, {
+            duration: 300,
+            queue: false
+        });
         $panel.animate({ width: 300 }, 300, function() {
+            console.log("WAT");
             $panel.find(".content-"+text).show();
             $popup.show().data("active", text);
             is_open = true;
@@ -77,6 +87,10 @@ $(window).ready(function() {
     }
 
     function closePanel() {
+        $editor.animate({ left: bar_width }, {
+            duration: 300,
+            queue: false
+        });
         $panel.animate({ width: 0 }, 300, function() {
             $block.css({ borderRight: "none"});
             is_open = false;
@@ -86,6 +100,7 @@ $(window).ready(function() {
 
     $popup.click(function() {
         $panel.css({ width: 0 });
+        $editor.offset({ left: bar_width });
         $block.css({ borderRight: "none"});
         $panel.find('.entypo-popup').hide();
         is_open  = false;
