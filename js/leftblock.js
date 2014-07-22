@@ -1,10 +1,20 @@
 $(window).ready(function() {
 
+    var $window        = $(window);
     var $block         = $("#left-block");
     var $bar           = $("#left-bar");
     var $panel         = $("#left-panel");
     var $panel_content = $("#left-panel .content");
     var $buttons       = $bar.find('[class*="entypo-"]');
+
+    $window.resize(resize);
+
+    function resize() {
+        $bar.height($window.height());
+        $panel.height($window.height());
+    }
+
+    resize();
 
     $buttons.click(function() {
         var $this = $(this);
