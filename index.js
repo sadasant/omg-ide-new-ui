@@ -1,6 +1,7 @@
 var connect = require('connect');
 var path = __dirname+'/';
+var port = process.env.PORT || 8080;
 connect.createServer(
     connect.static(path)
-).listen(8080);
-console.log("Serving "+path+" at: localhost:8080");
+).listen(port);
+console.log("Serving "+path+" at: localhost:"+port);
