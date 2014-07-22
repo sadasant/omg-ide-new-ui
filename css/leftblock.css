@@ -3,7 +3,16 @@
 #left-block {
     height:        100%;
     display:       inline-block;
-    margin-bottom: -5px;
+}
+
+.left-excess {
+    width:      50px;
+    height:     100%;
+    background: #37a;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    z-index:    -10;
 }
 
 #left-bar {
