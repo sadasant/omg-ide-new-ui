@@ -12,6 +12,10 @@ $(window).ready(function() {
     var $compile = $("#compile");
     var $deploy  = $("#deploy");
 
+    var $logs      = $("#logs");
+    var $open_logs = $("#open-logs");
+    var $ide_logs  = $(".logs-content-ide");
+
     var bar_width        = 50;
     var panel_open_width = 351;
 
@@ -140,7 +144,8 @@ $(window).ready(function() {
                 $window.off("mousemove", onMouseMove);
                 return;
             }
-            if ($(e.target).hasClass("select")) {
+            var $target = $(e.target);
+            if ($target.hasClass("select") || $target.parents(".select").length || getSelectedText()) {
                 return;
             }
             mouse.x = e.clientX;
@@ -158,6 +163,23 @@ $(window).ready(function() {
         $compile.addClass("entypo-flash alert");
         $compile.find(".tooltip-right").text("Compiling...");
         setTimeout(function() {
+            $ide_logs.append([
+                "",
+                "Compiling, please Wait...",
+                "<div style='color:cyan'>size:</div> 22",
+                "<div style='color:cyan'>posxml:</div> ZDAKMApIRVkgUE9TWE1MIQoNdQ0xDQxC106D3A15==",
+                "<div style='color:cyan'>integers:</div> 0",
+                "<div style='color:cyan'>strings:</div> 0",
+                "<div style='color:cyan'>functions:</div> 0",
+                "<div style='color:cyan'>maxvars:</div> 512",
+                "<div style='color:cyan'>maxfuncs:</div> 128",
+                "Compilation successful!",
+            ].map(function(e) {
+                return $("<li/>").html(e);
+            }));
+            if (!$logs.hasClass("popup")) {
+                $open_logs.addClass("alert");
+            }
             $compile.removeClass("entypo-flash alert");
             $compile.addClass("entypo-check");
             $compile.find(".tooltip-right").text("Compiled");
@@ -177,5 +199,15 @@ $(window).ready(function() {
             }, 1500);
         }, 3000);
     });
+
+    function getSelectedText() {
+        var text = "";
+        if (typeof window.getSelection != "undefined") {
+            text = window.getSelection().toString();
+        } else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
+            text = document.selection.createRange().text;
+        }
+        return text;
+    }
 
 });
