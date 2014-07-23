@@ -154,10 +154,13 @@ $(window).ready(function() {
 
     $compile.click(function(e) {
         $compile.removeClass("entypo-check");
+        $compile.removeClass("entypo-attention");
         $compile.addClass("entypo-flash alert");
+        $compile.find(".tooltip-right").text("Compiling...");
         setTimeout(function() {
             $compile.removeClass("entypo-flash alert");
             $compile.addClass("entypo-check");
+            $compile.find(".tooltip-right").text("Compiled");
         }, 3000);
     });
 

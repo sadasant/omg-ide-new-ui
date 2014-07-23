@@ -1,8 +1,9 @@
 $(window).ready(function() {
 
-    var $window = $(window);
-    var $body   = $(document.body);
-    var $editor = $("#editor");
+    var $window  = $(window);
+    var $body    = $(document.body);
+    var $editor  = $("#editor");
+    var $compile = $("#compile");
 
     var editor  = ace.edit("editor");
     var session = editor.getSession();
@@ -65,4 +66,9 @@ $(window).ready(function() {
 
     editor.clearSelection();
 
+    editor.on("change", function() {
+        if (!$compile.hasClass("entypo-check")) return;
+        $compile.removeClass("entypo-check");
+        $compile.addClass("entypo-attention");
+    });
 });
