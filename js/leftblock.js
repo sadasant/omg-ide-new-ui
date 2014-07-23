@@ -132,8 +132,8 @@ $(window).ready(function() {
         var x = e.clientX;
         var y = e.clientY;
         var offset = $this.offset();
-        $this.off("mousemove", onMouseMove);
-        $this.on("mousemove", onMouseMove);
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
         var mouse = { x: 0, y: 0 };
         function onMouseMove(e) {
             if ($this.data("stopMouseMove")) {
