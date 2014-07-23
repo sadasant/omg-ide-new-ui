@@ -123,13 +123,13 @@ $(window).ready(function() {
         $content = $panel.find(".content-"+text);
         var $unpop = $("<div class='unpop entypo-left-open'/>");
         $unpop.click(function() {
-            $bar.find(".tooltip-right:contains("+text+")").parent().click();
-            $content.find('[class*="scroll_"]').remove();
-            $content.data("scroll-styles", $content.find('[class*="scroll-"]').map(function(_,e) { return $(e).attr("style"); }));
-            $content.find('[class*="scroll-"]').attr("style", "");
             $content.data("width", $content.width());
             $content.data("height", $content.height());
             $content.css({ width: "", height: "" });
+            $content.find('[class*="scroll_"]').remove();
+            $content.data("scroll-styles", $content.find('[class*="scroll-"]').map(function(_,e) { return $(e).attr("style"); }));
+            $content.find('[class*="scroll-"]').attr("style", "");
+            $bar.find(".tooltip-right:contains("+text+")").parent().click();
         });
         $content.prepend($unpop);
         $content.addClass("popup");

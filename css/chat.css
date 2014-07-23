@@ -52,7 +52,7 @@
     overflow-y: scroll;
     padding:    0 10px 0 0;
     box-shadow: inset 0px 0px 10px #eee;
-    height:     70%;
+    height:     80%;
 }
 
 #chat.popup .conversation {
