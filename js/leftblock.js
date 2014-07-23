@@ -137,6 +137,7 @@ $(window).ready(function() {
         $buttons.removeClass("active");
         $content.append($popup_scroll_corner.clone());
         $content.append($popup_scroll_top.clone());
+        $content.append($popup_scroll_bottom.clone());
         $content.css({
             width:  $content.data("width"),
             height: $content.data("height")
@@ -343,6 +344,54 @@ $(window).ready(function() {
 
             $scrollYs.each(function(i, e) {
                 $(e).height(heights[i] - mouse.y + y);
+            });
+        }
+    });
+
+    $body.on("mousedown", ".scroll_bottom", function(e) {
+        var $this  = $(this);
+        var $popup = $this.parent();
+
+        $popup.addClass("resizing");
+
+        $this.data("stopMouseMove", false);
+        $window.mouseup(function() {
+            $this.data("stopMouseMove", true);
+            $this.removeClass("dropshadow");
+        });
+
+        var y      = e.clientY;
+        var height = $popup.height();
+        var offset = $popup.offset();
+
+        var $scrollYs = $popup.find(".scroll-y");
+        var heights   = $scrollYs.map(function(_,e){return $(e).height(); });
+
+        var min_height = parseInt($popup.css("min-height"));
+
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
+        var mouse = { y: 0 };
+        function onMouseMove(e) {
+            if ($this.data("stopMouseMove")) {
+                $window.off("mousemove", onMouseMove);
+                $popup.removeClass("resizing");
+                return;
+            }
+            mouse.y = e.clientY;
+
+            var popup_height = height + mouse.y - y;
+
+            var do_y = popup_height >= min_height &&
+                       (popup_height <= $window.height()*0.8 ||
+                       popup_height < $popup.height());
+
+            if (!do_y) return;
+
+            $popup.css("height", popup_height);
+
+            $scrollYs.each(function(i, e) {
+                $(e).height(heights[i] + mouse.y - y);
             });
         }
     });
