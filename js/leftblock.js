@@ -167,9 +167,14 @@ $(window).ready(function() {
     $deploy.click(function(e) {
         $deploy.removeClass("entypo-check");
         $deploy.addClass("entypo-cloud-thunder alert");
+        $deploy.find(".tooltip-right").text("Deploying...");
         setTimeout(function() {
             $deploy.removeClass("entypo-cloud-thunder alert");
             $deploy.addClass("entypo-check");
+            $deploy.find(".tooltip-right").text("Deployed!");
+            setTimeout(function() {
+                $deploy.find(".tooltip-right").text("Deploy");
+            }, 1500);
         }, 3000);
     });
 
