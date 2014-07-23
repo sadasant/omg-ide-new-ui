@@ -39,6 +39,8 @@
 #left-bar [class*="entypo-"].alert:before {
     color: #fc4;
     -webkit-animation: tumble 1.5s linear infinite;
+       -moz-animation: tumble 1.5s linear infinite;
+            animation: tumble 1.5s linear infinite;
 }
 #left-bar [class*="entypo-"] {
     width:  auto;
