@@ -16,6 +16,10 @@ $(window).ready(function() {
     var $open_logs = $("#open-logs");
     var $ide_logs  = $(".logs-content-ide");
 
+    var $popup_scroll_corner = $("<div class='scroll_corner'>");
+    var $popup_scroll_bottom = $("<div class='scroll_bottom'>");
+    var $popup_scroll_right  = $("<div class='scroll_right'>");
+
     var bar_width        = 50;
     var panel_open_width = 351;
 
@@ -118,11 +122,26 @@ $(window).ready(function() {
         var $unpop = $("<div class='unpop entypo-left-open'/>");
         $unpop.click(function() {
             $bar.find(".tooltip-right:contains("+text+")").parent().click();
+            $content.find('[class*="scroll_"]').remove();
+            $content.data("scroll-styles", $content.find('[class*="scroll-"]').map(function(_,e) { return $(e).attr("style"); }));
+            $content.find('[class*="scroll-"]').attr("style", "");
+            $content.data("width", $content.width());
+            $content.data("height", $content.height());
+            $content.css({ width: "", height: "" });
         });
         $content.prepend($unpop);
         $content.addClass("popup");
         $content.mousedown(onMouseDown);
         $buttons.removeClass("active");
+        $content.append($popup_scroll_corner.clone());
+        $content.css({
+            width:  $content.data("width"),
+            height: $content.data("height")
+        });
+        var styles = $content.data("scroll-styles");
+        $content.find('[class*="scroll-"]').each(function(i, e) {
+            $(e).attr("style", styles[i]);
+        });
     });
 
     function onMouseDown(e) {
@@ -147,7 +166,13 @@ $(window).ready(function() {
                 return;
             }
             var $target = $(e.target);
-            if ($target.hasClass("select") || $target.parents(".select").length || getSelectedText()) {
+            if ($target.hasClass("select") ||
+                $target.parents(".select").length ||
+                getSelectedText() ||
+                $this.hasClass("resizing") ||
+                $target.hasClass("scroll_corner") ||
+                $target.hasClass("scroll_bottom") ||
+                $target.hasClass("scroll_right")) {
                 return;
             }
             mouse.x = e.clientX;
@@ -211,5 +236,52 @@ $(window).ready(function() {
         }
         return text;
     }
+
+    $body.on("mousedown", ".scroll_corner", function(e) {
+        var $this  = $(this);
+        var $popup = $this.parent();
+
+        $popup.addClass("resizing");
+
+        $this.data("stopMouseMove", false);
+        $window.mouseup(function() {
+            $this.data("stopMouseMove", true);
+            $this.removeClass("dropshadow");
+        });
+
+        var x = e.clientX;
+        var y = e.clientY;
+
+        var width   = $popup.width();
+        var height  = $popup.height();
+
+        var $scrollYs = $popup.find(".scroll-y");
+        var $scrollXs = $popup.find(".scroll-x");
+        var heights = $scrollYs.map(function(_,e){return $(e).height(); });
+        var widths  = $scrollXs.map(function(_,e){return $(e).width(); });
+
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
+        var mouse = { x: 0, y: 0 };
+        function onMouseMove(e) {
+            if ($this.data("stopMouseMove")) {
+                $window.off("mousemove", onMouseMove);
+                $popup.removeClass("resizing");
+                return;
+            }
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            $popup.css({
+                width:  width  + mouse.x - x,
+                height: height + mouse.y - y
+            });
+            $scrollXs.each(function(i, e) {
+                $(e).width(widths[i] + mouse.x - x);
+            });
+            $scrollYs.each(function(i, e) {
+                $(e).height(heights[i] + mouse.y - y);
+            });
+        }
+    });
 
 });

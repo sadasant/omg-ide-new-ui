@@ -130,6 +130,29 @@
     left:          60px;
 }
 
+#left-panel .popup,
+#left-panel .popup * {
+    cursor: move;
+}
+#left-panel .popup .select,
+#left-panel .popup .select *,
+#left-panel .popup textarea,
+#left-panel .popup input,
+#left-panel .popup button,
+#left-panel .popup button * {
+    cursor: auto;
+}
+
+#left-panel .popup .scroll_corner {
+    width:       15px;
+    height:      15px;
+    cursor:      nwse-resize;
+    position:    absolute;
+    left:        100%;
+    margin-left: -14px;
+    bottom:      -1px;
+}
+
 #left-panel .popup.dropshadow {
     box-shadow: -1px 4px 6px rgba(0,0,0,.1);
 }

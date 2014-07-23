@@ -3,6 +3,8 @@
 
 #logs.popup {
     background: rgba(245,245,245,.8);
+    min-width:  190px;
+    min-height: 190px;
 }
 
 #logs .tabs {
@@ -64,6 +66,6 @@
 
 #logs.popup [class*="logs-content-"] {
     background: rgba(0,0,0,.9);
-    max-width:  350px;
-    max-height: 350px;
+    min-width:  170px;
+    min-height: 150px;
 }

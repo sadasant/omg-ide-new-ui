@@ -1,4 +1,6 @@
 #chat {
+    min-width:  270px !important;
+    min-height: 208px !important;
 }
 
 #chat .active-users {
@@ -54,7 +56,8 @@
 }
 
 #chat.popup .conversation {
-    max-height: 100px;
+    height:     100px;
+    min-height: 100px;
     min-width:  262px;
 }
 
@@ -76,6 +79,7 @@
     border-radius: 2px;
     border:        1px solid #ddd;
     width:         220px;
+    min-width:     220px;
     height:        33px;
     resize:        none;
     font-size:     14px;
@@ -91,4 +95,10 @@
     float:         right;
     border:        0;
     border-radius: 2px;
+    cursor:        pointer;
+    border-bottom: 1px solid #558;
+}
+
+#chat .submit-form button * {
+    cursor: pointer;
 }
