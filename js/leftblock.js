@@ -150,7 +150,7 @@ $(window).ready(function() {
         $this.css({ zIndex: 10 });
         $this.data("stopMouseMove", false);
         $this.addClass("dropshadow");
-        $this.mouseup(function() {
+        $window.mouseup(function() {
             $this.data("stopMouseMove", true);
             $this.removeClass("dropshadow");
         });
@@ -204,7 +204,7 @@ $(window).ready(function() {
             ].map(function(e) {
                 return $("<li/>").html(e);
             }));
-            if (!$logs.hasClass("popup")) {
+            if (!$logs.hasClass("popup") && !$logs.is(":visible")) {
                 $open_logs.addClass("alert");
             }
             $compile.removeClass("entypo-flash alert");
@@ -271,14 +271,21 @@ $(window).ready(function() {
             }
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            $popup.css({
-                width:  width  + mouse.x - x,
-                height: height + mouse.y - y
-            });
-            $scrollXs.each(function(i, e) {
+
+            var popup_width  = width  + mouse.x - x;
+            var popup_height = height + mouse.y - y;
+
+            var do_x = popup_width  <= $window.width()*0.8  || popup_width  < $popup.width();
+            var do_y = popup_height <= $window.height()*0.8 || popup_height < $popup.height();
+
+            if (do_x)  $popup.css("width", popup_width);
+            if (do_y) $popup.css("height", popup_height);
+
+            if (do_x) $scrollXs.each(function(i, e) {
                 $(e).width(widths[i] + mouse.x - x);
             });
-            $scrollYs.each(function(i, e) {
+
+            if (do_y) $scrollYs.each(function(i, e) {
                 $(e).height(heights[i] + mouse.y - y);
             });
         }
