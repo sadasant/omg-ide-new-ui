@@ -138,6 +138,8 @@ $(window).ready(function() {
         $content.append($popup_scroll_corner.clone());
         $content.append($popup_scroll_top.clone());
         $content.append($popup_scroll_bottom.clone());
+        $content.append($popup_scroll_right.clone());
+        $content.append($popup_scroll_left.clone());
         $content.css({
             width:  $content.data("width"),
             height: $content.data("height")
@@ -151,14 +153,29 @@ $(window).ready(function() {
     });
 
     function onMouseDown(e) {
-        $this = $(this);
+        var $this   = $(this);
+        var $target = $(e.target);
+
+        if ($target.hasClass("select") ||
+            $target.parents(".select").length ||
+            $this.hasClass("resizing") ||
+            $target.hasClass("scroll_corner") ||
+            $target.hasClass("scroll_top")    ||
+            $target.hasClass("scroll_bottom") ||
+            $target.hasClass("scroll_right")  ||
+            $target.hasClass("scroll_left")) {
+            return;
+        }
+
         $(".popup").css({ zIndex: 9 });
         $this.css({ zIndex: 10 });
         $this.data("stopMouseMove", false);
         $this.addClass("dropshadow");
+        $this.addClass("no-select-childs");
         $window.mouseup(function() {
             $this.data("stopMouseMove", true);
             $this.removeClass("dropshadow");
+            $this.removeClass("no-select-childs");
         });
         var x = e.clientX;
         var y = e.clientY;
@@ -169,18 +186,6 @@ $(window).ready(function() {
         function onMouseMove(e) {
             if ($this.data("stopMouseMove")) {
                 $window.off("mousemove", onMouseMove);
-                return;
-            }
-            var $target = $(e.target);
-            if ($target.hasClass("select") ||
-                $target.parents(".select").length ||
-                getSelectedText() ||
-                $this.hasClass("resizing") ||
-                $target.hasClass("scroll_corner") ||
-                $target.hasClass("scroll_top")    ||
-                $target.hasClass("scroll_bottom") ||
-                $target.hasClass("scroll_right")  ||
-                $target.hasClass("scroll_left")) {
                 return;
             }
             mouse.x = e.clientX;
@@ -235,21 +240,12 @@ $(window).ready(function() {
         }, 3000);
     });
 
-    function getSelectedText() {
-        var text = "";
-        if (typeof window.getSelection != "undefined") {
-            text = window.getSelection().toString();
-        } else if (typeof document.selection != "undefined" && document.selection.type == "Text") {
-            text = document.selection.createRange().text;
-        }
-        return text;
-    }
-
     $body.on("mousedown", ".scroll_corner", function(e) {
         var $this  = $(this);
         var $popup = $this.parent();
 
         $popup.addClass("resizing");
+        $popup.addClass("no-select-childs");
 
         $this.data("stopMouseMove", false);
         $window.mouseup(function() {
@@ -275,6 +271,7 @@ $(window).ready(function() {
             if ($this.data("stopMouseMove")) {
                 $window.off("mousemove", onMouseMove);
                 $popup.removeClass("resizing");
+                $popup.removeClass("no-select-childs");
                 return;
             }
             mouse.x = e.clientX;
@@ -304,6 +301,7 @@ $(window).ready(function() {
         var $popup = $this.parent();
 
         $popup.addClass("resizing");
+        $popup.addClass("no-select-childs");
 
         $this.data("stopMouseMove", false);
         $window.mouseup(function() {
@@ -327,6 +325,7 @@ $(window).ready(function() {
             if ($this.data("stopMouseMove")) {
                 $window.off("mousemove", onMouseMove);
                 $popup.removeClass("resizing");
+                $popup.removeClass("no-select-childs");
                 return;
             }
             mouse.y = e.clientY;
@@ -353,6 +352,7 @@ $(window).ready(function() {
         var $popup = $this.parent();
 
         $popup.addClass("resizing");
+        $popup.addClass("no-select-childs");
 
         $this.data("stopMouseMove", false);
         $window.mouseup(function() {
@@ -362,7 +362,6 @@ $(window).ready(function() {
 
         var y      = e.clientY;
         var height = $popup.height();
-        var offset = $popup.offset();
 
         var $scrollYs = $popup.find(".scroll-y");
         var heights   = $scrollYs.map(function(_,e){return $(e).height(); });
@@ -376,6 +375,7 @@ $(window).ready(function() {
             if ($this.data("stopMouseMove")) {
                 $window.off("mousemove", onMouseMove);
                 $popup.removeClass("resizing");
+                $popup.removeClass("no-select-childs");
                 return;
             }
             mouse.y = e.clientY;
@@ -392,6 +392,107 @@ $(window).ready(function() {
 
             $scrollYs.each(function(i, e) {
                 $(e).height(heights[i] + mouse.y - y);
+            });
+        }
+    });
+
+    $body.on("mousedown", ".scroll_right", function(e) {
+        var $this  = $(this);
+        var $popup = $this.parent();
+
+        $popup.addClass("resizing");
+        $popup.addClass("no-select-childs");
+
+        $this.data("stopMouseMove", false);
+        $window.mouseup(function() {
+            $this.data("stopMouseMove", true);
+            $this.removeClass("dropshadow");
+        });
+
+        var x     = e.clientX;
+        var width = $popup.width();
+
+        var $scrollXs = $popup.find(".scroll-x");
+        var widths    = $scrollXs.map(function(_,e){return $(e).width(); });
+
+        var min_width = parseInt($popup.css("min-width"));
+
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
+        var mouse = { x: 0 };
+        function onMouseMove(e) {
+            if ($this.data("stopMouseMove")) {
+                $window.off("mousemove", onMouseMove);
+                $popup.removeClass("resizing");
+                $popup.removeClass("no-select-childs");
+                return;
+            }
+            mouse.x = e.clientX;
+
+            var popup_width = width + mouse.x - x;
+
+            var do_x = popup_width >= min_width &&
+                       (popup_width <= $window.width()*0.8 ||
+                       popup_width < $popup.width());
+
+            if (!do_x) return;
+
+            $popup.css("width", popup_width);
+
+            $scrollXs.each(function(i, e) {
+                $(e).width(widths[i] + mouse.x - x);
+            });
+        }
+    });
+
+
+    $body.on("mousedown", ".scroll_left", function(e) {
+        var $this  = $(this);
+        var $popup = $this.parent();
+
+        $popup.addClass("resizing");
+        $popup.addClass("no-select-childs");
+
+        $this.data("stopMouseMove", false);
+        $window.mouseup(function() {
+            $this.data("stopMouseMove", true);
+            $this.removeClass("dropshadow");
+        });
+
+        var x      = e.clientX;
+        var width  = $popup.width();
+        var offset = $popup.offset();
+
+        var $scrollXs = $popup.find(".scroll-x");
+        var widths    = $scrollXs.map(function(_,e){return $(e).width(); });
+
+        var min_width = parseInt($popup.css("min-width"));
+
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
+        var mouse = { x: 0 };
+        function onMouseMove(e) {
+            if ($this.data("stopMouseMove")) {
+                $window.off("mousemove", onMouseMove);
+                $popup.removeClass("resizing");
+                $popup.removeClass("no-select-childs");
+                return;
+            }
+            mouse.x = e.clientX;
+
+            var popup_width = width - mouse.x + x;
+
+            var do_x = popup_width >= min_width &&
+                       (popup_width <= $window.width()*0.8 ||
+                       popup_width < $popup.width());
+
+            if (!do_x) return;
+
+            $popup.css("width", popup_width);
+            $popup.offset({ left: offset.left + mouse.x - x });
+
+            $scrollXs.each(function(i, e) {
+                $(e).width(widths[i] - mouse.x + x);
             });
         }
     });

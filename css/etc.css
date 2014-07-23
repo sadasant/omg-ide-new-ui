@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-.no-select {
+.no-select, .no-select-childs * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;

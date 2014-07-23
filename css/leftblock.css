@@ -145,20 +145,23 @@
     cursor: auto;
 }
 
+#left-panel .popup [class*="scroll_"]:hover {
+    background: #a1b8ca;
+}
+
 #left-panel .popup .scroll_corner {
-    /* background:  red; */
-    width:    15px;
-    height:   15px;
-    cursor:   nwse-resize;
-    position: absolute;
-    right:    -1px;
-    bottom:   -1px;
+    width:         10px;
+    height:        10px;
+    cursor:        nwse-resize;
+    position:      absolute;
+    right:         -1px;
+    bottom:        -1px;
+    border-radius: 0 0 4px 0;
 }
 
 #left-panel .popup .scroll_top {
-    /* background:  red; */
     width:    50%;
-    height:   10px;
+    height:   5px;
     cursor:   n-resize;
     position: absolute;
     left:     27%;
@@ -166,13 +169,30 @@
 }
 
 #left-panel .popup .scroll_bottom {
-    /* background:  red; */
     width:    50%;
-    height:   10px;
+    height:   5px;
     cursor:   s-resize;
     position: absolute;
     left:     27%;
     bottom:   -1px;
+}
+
+#left-panel .popup .scroll_right {
+    width:    5px;
+    height:   50%;
+    cursor:   e-resize;
+    position: absolute;
+    top:      25%;
+    right:    -1px;
+}
+
+#left-panel .popup .scroll_left {
+    width:    5px;
+    height:   50%;
+    cursor:   e-resize;
+    position: absolute;
+    top:      25%;
+    left:     -1px;
 }
 
 #left-panel .popup.dropshadow {
