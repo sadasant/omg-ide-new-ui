@@ -1,8 +1,9 @@
 /* Left Block's css */
 
 #left-block {
-    height:  100%;
-    display: inline-block;
+    height:     100%;
+    display:    inline-block;
+    background: #f5f5f5;
 }
 
 #left-bar {
