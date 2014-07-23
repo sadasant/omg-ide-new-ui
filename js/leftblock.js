@@ -127,6 +127,8 @@ $(window).ready(function() {
 
     function onMouseDown(e) {
         $this = $(this);
+        $(".popup").css({ zIndex: 9 });
+        $this.css({ zIndex: 10 });
         $this.data("stopMouseMove", false);
         $this.addClass("dropshadow");
         $this.mouseup(function() {
