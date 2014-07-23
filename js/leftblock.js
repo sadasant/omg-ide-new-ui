@@ -9,6 +9,9 @@ $(window).ready(function() {
     var $popup   = $panel.find(".entypo-popup");
     var $editor  = $("#editor");
 
+    var $compile = $("#compile");
+    var $deploy  = $("#deploy");
+
     var bar_width        = 50;
     var panel_open_width = 351;
 
@@ -33,13 +36,15 @@ $(window).ready(function() {
 
     $buttons.click(function() {
         if (busy) return;
-        busy = true;
 
         var $this     = $(this);
         var is_active = $this.hasClass("active");
         var text      = $this.find(".tooltip-right").text();
         var $content  = $panel.find(".content-"+text);
         var is_popup  = $content.hasClass("popup");
+
+        if (!$content[0]) return;
+        busy = true;
 
         $panel.find(".content:not(.popup)").hide();
         $popup.hide();
@@ -61,6 +66,7 @@ $(window).ready(function() {
         }
 
         $this.toggleClass("active");
+        $this.removeClass("alert");
 
         if (is_open) {
             $panel.find(".content-"+text).show();
@@ -78,7 +84,6 @@ $(window).ready(function() {
             queue: false
         });
         $panel.animate({ width: 300 }, 300, function() {
-            console.log("WAT");
             $panel.find(".content-"+text).show();
             $popup.show().data("active", text);
             is_open = true;
@@ -146,5 +151,23 @@ $(window).ready(function() {
             });
         }
     }
+
+    $compile.click(function(e) {
+        $compile.removeClass("entypo-check");
+        $compile.addClass("entypo-flash alert");
+        setTimeout(function() {
+            $compile.removeClass("entypo-flash alert");
+            $compile.addClass("entypo-check");
+        }, 3000);
+    });
+
+    $deploy.click(function(e) {
+        $deploy.removeClass("entypo-check");
+        $deploy.addClass("entypo-cloud-thunder alert");
+        setTimeout(function() {
+            $deploy.removeClass("entypo-cloud-thunder alert");
+            $deploy.addClass("entypo-check");
+        }, 3000);
+    });
 
 });

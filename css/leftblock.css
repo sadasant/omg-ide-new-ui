@@ -36,8 +36,9 @@
     display:   inline-block;
     padding:   10px 0;
 }
-#left-bar [class*="entypo-"].ide-alert:before {
+#left-bar [class*="entypo-"].alert:before {
     color: #fc4;
+    -webkit-animation: tumble 1.5s linear infinite;
 }
 #left-bar [class*="entypo-"] {
     width:  auto;
@@ -45,6 +46,33 @@
 }
 #left-bar [class*="entypo-"]:hover:before {
     color: white;
+}
+@-webkit-keyframes tumble {
+    20% { -webkit-transform: rotate(  0deg); }
+    30% { -webkit-transform: rotate( 20deg); }
+    40% { -webkit-transform: rotate(-20deg); }
+    50% { -webkit-transform: rotate( 20deg); }
+    60% { -webkit-transform: rotate(-20deg); }
+    70% { -webkit-transform: rotate( 20deg); }
+    80% { -webkit-transform: rotate(  0deg); }
+}
+@-moz-keyframes tumble {
+    20% { -moz-transform: rotate(  0deg); }
+    30% { -moz-transform: rotate( 20deg); }
+    40% { -moz-transform: rotate(-20deg); }
+    50% { -moz-transform: rotate( 20deg); }
+    60% { -moz-transform: rotate(-20deg); }
+    70% { -moz-transform: rotate( 20deg); }
+    80% { -moz-transform: rotate(  0deg); }
+}
+@keyframes tumble {
+    20% { -webkit-transform: rotate(  0deg); transform: rotate(  0deg); }
+    30% { -webkit-transform: rotate( 20deg); transform: rotate( 20deg); }
+    40% { -webkit-transform: rotate(-20deg); transform: rotate(-20deg); }
+    50% { -webkit-transform: rotate( 20deg); transform: rotate( 20deg); }
+    60% { -webkit-transform: rotate(-20deg); transform: rotate(-20deg); }
+    70% { -webkit-transform: rotate( 20deg); transform: rotate( 20deg); }
+    80% { -webkit-transform: rotate(  0deg); transform: rotate(  0deg); }
 }
 
 #left-bar [class*="entypo-"].active:before {
