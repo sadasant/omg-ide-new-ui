@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="css/etc.css"/>
 	<link rel="stylesheet" href="css/leftblock.css"/>
 	<link rel="stylesheet" href="css/chat.css"/>
+	<link rel="stylesheet" href="css/logs.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
 </head>
 <body>
@@ -116,8 +117,17 @@
 				</div>
 			</div>
 
-			<div class="content content-Logs">
-				<div class="title">Logs</div>
+			<div class="content content-Logs" id="logs">
+				<ul class="tabs">
+					<li class="active">IDE</li>
+					<li               >Switch</li>
+				</ul>
+				<ul class="logs-content-ide active">
+					<li>Welcome to CloudWalk IDE!</li>
+				</ul>
+				<ul class="logs-content-switch">
+					<li>The Switch's Logs</li>
+				</ul>
 			</div>
 
 		</div>
@@ -131,5 +141,6 @@
 
 	<script src="js/leftblock.js"></script>
 	<script src="js/editor.js"></script>
+	<script src="js/logs.js"></script>
 </body>
 </html>
