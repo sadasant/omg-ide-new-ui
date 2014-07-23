@@ -17,8 +17,10 @@ $(window).ready(function() {
     var $ide_logs  = $(".logs-content-ide");
 
     var $popup_scroll_corner = $("<div class='scroll_corner'>");
+    var $popup_scroll_top    = $("<div class='scroll_top'>");
     var $popup_scroll_bottom = $("<div class='scroll_bottom'>");
     var $popup_scroll_right  = $("<div class='scroll_right'>");
+    var $popup_scroll_left   = $("<div class='scroll_left'>");
 
     var bar_width        = 50;
     var panel_open_width = 351;
@@ -134,13 +136,16 @@ $(window).ready(function() {
         $content.mousedown(onMouseDown);
         $buttons.removeClass("active");
         $content.append($popup_scroll_corner.clone());
+        $content.append($popup_scroll_top.clone());
         $content.css({
             width:  $content.data("width"),
             height: $content.data("height")
         });
-        var styles = $content.data("scroll-styles");
+        var styles = $content.data("scroll-styles") || [];
         $content.find('[class*="scroll-"]').each(function(i, e) {
-            $(e).attr("style", styles[i]);
+            if (styles[i]) {
+                $(e).attr("style", styles[i]);
+            }
         });
     });
 
@@ -171,8 +176,10 @@ $(window).ready(function() {
                 getSelectedText() ||
                 $this.hasClass("resizing") ||
                 $target.hasClass("scroll_corner") ||
+                $target.hasClass("scroll_top")    ||
                 $target.hasClass("scroll_bottom") ||
-                $target.hasClass("scroll_right")) {
+                $target.hasClass("scroll_right")  ||
+                $target.hasClass("scroll_left")) {
                 return;
             }
             mouse.x = e.clientX;
@@ -287,6 +294,55 @@ $(window).ready(function() {
 
             if (do_y) $scrollYs.each(function(i, e) {
                 $(e).height(heights[i] + mouse.y - y);
+            });
+        }
+    });
+
+    $body.on("mousedown", ".scroll_top", function(e) {
+        var $this  = $(this);
+        var $popup = $this.parent();
+
+        $popup.addClass("resizing");
+
+        $this.data("stopMouseMove", false);
+        $window.mouseup(function() {
+            $this.data("stopMouseMove", true);
+            $this.removeClass("dropshadow");
+        });
+
+        var y      = e.clientY;
+        var height = $popup.height();
+        var offset = $popup.offset();
+
+        var $scrollYs = $popup.find(".scroll-y");
+        var heights   = $scrollYs.map(function(_,e){return $(e).height(); });
+
+        var min_height = parseInt($popup.css("min-height"));
+
+        $window.off("mousemove", onMouseMove);
+        $window.on("mousemove", onMouseMove);
+        var mouse = { y: 0 };
+        function onMouseMove(e) {
+            if ($this.data("stopMouseMove")) {
+                $window.off("mousemove", onMouseMove);
+                $popup.removeClass("resizing");
+                return;
+            }
+            mouse.y = e.clientY;
+
+            var popup_height = height - mouse.y + y;
+
+            var do_y = popup_height >= min_height &&
+                       (popup_height <= $window.height()*0.8 ||
+                       popup_height < $popup.height());
+
+            if (!do_y) return;
+
+            $popup.css("height", popup_height);
+            $popup.offset({ top: offset.top + mouse.y - y });
+
+            $scrollYs.each(function(i, e) {
+                $(e).height(heights[i] - mouse.y + y);
             });
         }
     });
