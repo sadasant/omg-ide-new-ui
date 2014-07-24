@@ -56,6 +56,8 @@ $(window).ready(function() {
         if (!$content[0]) return;
         busy = true;
 
+        $content.data("text", text);
+
         $panel.find(".content:not(.popup)").hide();
         $popup.hide();
         $buttons.removeClass("active");
@@ -80,7 +82,7 @@ $(window).ready(function() {
 
         if (is_open) {
             $panel.find(".content-"+text).show();
-            $popup.show().data("active", text);
+            $popup.show();
             busy = false;
         } else {
             openPanel(text);
@@ -95,7 +97,7 @@ $(window).ready(function() {
         });
         $panel.animate({ width: 300 }, 300, function() {
             $panel.find(".content-"+text).show();
-            $popup.show().data("active", text);
+            $popup.show();
             is_open = true;
             busy    = false;
         });
@@ -114,15 +116,16 @@ $(window).ready(function() {
     }
 
     $popup.click(function() {
+        is_open      = false;
+        var $content = $panel.find(".content:visible:not(.popup)");
+        var text     = $content.data("text");
+        var $unpop   = $("<div class='unpop entypo-left-open'/>");
         $panel.css({ width: 0 });
         $editor.offset({ left: bar_width });
         $block.css({ borderRight: "none"});
         $panel.find('.entypo-popup').hide();
-        is_open  = false;
-        var text = $popup.data("active");
-        $content = $panel.find(".content-"+text);
-        var $unpop = $("<div class='unpop entypo-left-open'/>");
-        $unpop.click(function() {
+        $content.prepend($unpop);
+        $content.on("click", ".unpop", function() {
             $content.data("width", $content.width());
             $content.data("height", $content.height());
             $content.css({ width: "", height: "" });
@@ -131,7 +134,6 @@ $(window).ready(function() {
             $content.find('[class*="scroll-"]').attr("style", "");
             $bar.find(".tooltip-right:contains("+text+")").parent().click();
         });
-        $content.prepend($unpop);
         $content.addClass("popup");
         $content.mousedown(onMouseDown);
         $buttons.removeClass("active");
