@@ -1,5 +1,5 @@
 /* From: http://weloveiconfonts.com/ */
-@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(entypo/api.css);
 
 /* entypo */
 [class*="entypo-"]:before {
