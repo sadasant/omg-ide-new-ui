@@ -288,12 +288,30 @@ $(window).ready(function() {
             if (do_x)  $popup.css("width", popup_width);
             if (do_y) $popup.css("height", popup_height);
 
+            var link_i = null;
+
             if (do_x) $scrollXs.each(function(i, e) {
-                $(e).width(widths[i] + mouse.x - x);
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
+                $e.width(widths[i] + mouse.x - x);
             });
 
             if (do_y) $scrollYs.each(function(i, e) {
-                $(e).height(heights[i] + mouse.y - y);
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
+                $e.height(heights[i] + mouse.y - y);
             });
         }
     });
@@ -343,8 +361,17 @@ $(window).ready(function() {
             $popup.css("height", popup_height);
             $popup.offset({ top: offset.top + mouse.y - y });
 
+            var link_i = null;
             $scrollYs.each(function(i, e) {
-                $(e).height(heights[i] - mouse.y + y);
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
+                $e.height(heights[i] - mouse.y + y);
             });
         }
     });
@@ -392,8 +419,17 @@ $(window).ready(function() {
 
             $popup.css("height", popup_height);
 
+            var link_i = null;
             $scrollYs.each(function(i, e) {
-                $(e).height(heights[i] + mouse.y - y);
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
+                $e.height(heights[i] + mouse.y - y);
             });
         }
     });
@@ -441,8 +477,17 @@ $(window).ready(function() {
 
             $popup.css("width", popup_width);
 
+            var link_i = null;
             $scrollXs.each(function(i, e) {
-                $(e).width(widths[i] + mouse.x - x);
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
+                $e.width(widths[i] + mouse.x - x);
             });
         }
     });
@@ -493,7 +538,16 @@ $(window).ready(function() {
             $popup.css("width", popup_width);
             $popup.offset({ left: offset.left + mouse.x - x });
 
+            var link_i = null;
             $scrollXs.each(function(i, e) {
+                var $e = $(e);
+                var has_link = $e.hasClass("link-scroll");
+                if (has_link) {
+                    if (link_i === null) {
+                        link_i = i;
+                    }
+                    i = link_i;
+                }
                 $(e).width(widths[i] - mouse.x + x);
             });
         }
