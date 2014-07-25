@@ -8,7 +8,6 @@ $(window).ready(function() {
         var $this = $(this);
         $this.addClass("active");
         var text = $this.text().toLowerCase().replace(/ /g, "-");
-        console.log(text);
         $help.find('[class*="help-content-"]').removeClass("active");
         $help.find(".help-content-"+text).addClass("active");
     });
