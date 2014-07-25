@@ -1,3 +1,5 @@
+/* global $   */
+/* global ace */
 $(window).ready(function() {
 
     var $window  = $(window);

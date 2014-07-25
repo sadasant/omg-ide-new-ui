@@ -1,7 +1,8 @@
+/* global $ */
 $(window).ready(function() {
 
-    $help = $("#help");
-    $tabs = $help.find(".tabs li");
+    var $help = $("#help");
+    var $tabs = $help.find(".tabs li");
 
     $tabs.click(function() {
         $tabs.removeClass("active");

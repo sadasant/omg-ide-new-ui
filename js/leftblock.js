@@ -1,3 +1,4 @@
+/* global $ */
 $(window).ready(function() {
 
     var $window  = $(window);

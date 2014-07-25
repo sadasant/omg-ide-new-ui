@@ -1,3 +1,4 @@
+/* global $ */
 $(window).ready(function() {
     setTimeout(function() {
         $("#loading-animation").fadeOut(function() {

@@ -1,7 +1,8 @@
+/* global $ */
 $(window).ready(function() {
 
-    $logs = $("#logs");
-    $tabs = $logs.find(".tabs li");
+    var $logs = $("#logs");
+    var $tabs = $logs.find(".tabs li");
 
     $tabs.click(function() {
         $tabs.removeClass("active");
