@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="css/leftblock.css"/>
 	<link rel="stylesheet" href="css/chat.css"/>
 	<link rel="stylesheet" href="css/logs.css"/>
+	<link rel="stylesheet" href="css/help.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
 </head>
 <body>
@@ -123,8 +124,8 @@
 
 			<div class="content content-Logs" id="logs">
 				<ul class="tabs no-select">
-					<li class="active">IDE</li>
-					<li               >Switch</li>
+					<li class="active" title="IDE"   >IDE</li>
+					<li                title="Switch">Switch</li>
 				</ul>
 				<ul class="logs-content-ide select scroll-y scroll-x active">
 					<li>Welcome to CloudWalk IDE!</li>
@@ -132,6 +133,66 @@
 				<ul class="logs-content-switch select scroll-y scroll-x">
 					<li>The Switch's Logs</li>
 				</ul>
+			</div>
+
+			<div class="content content-Help" id="help">
+				<ul class="tabs no-select">
+					<li class="active" title="Keyboard Shortcuts">Keyboard Shortcuts</li>
+					<li                title="Walk Framework"    >Walk Framework</li>
+				</ul>
+				<div class="help-content-keyboard-shortcuts select scroll-y scroll-x active">
+					<p>
+						Below there is the list of custom keybindings
+						for our <b>CloudWalk IDE</b> product, for more
+						keybindings, please visit
+						<a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">this website</a>.
+					</p>
+					<table>
+						<tr>
+							<th style="width:20%;">Shortcut</th>
+							<th style="width:80%;">Action</th>
+						</tr>
+						<tr>
+							<td>Ctrl-b</td>
+							<td>Compile the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-d</td>
+							<td>Deploy the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-e</td>
+							<td>Emulate the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-h</td>
+							<td>Fold or unfold the nearest fold.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-j</td>
+							<td>Fold or unfold all the folds.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-m</td>
+							<td>Toggle the terminal panel.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-y <br>Command-y</td>
+							<td>Toggle the apps panel.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-/ <br>Command-/</td>
+							<td>Toggle comments.</td>
+						</tr>
+					</table>
+				</div>
+				<div class="help-content-walk-framework select scroll-y scroll-x">
+					<p>
+						Click on the following links to acces the docs: <br><br>
+						<a href="https://docs.cloudwalk.io/en/posxml/commands#commands-list" target="_blank">Posxml Commands</a> <br>
+						<a href="https://docs.cloudwalk.io/en/posxml/commands#commands-list" target="_blank">Ruby Framework</a>
+					</p>
+				</div>
 			</div>
 
 		</div>
@@ -146,6 +207,7 @@
 	<script src="js/leftblock.js"></script>
 	<script src="js/editor.js"></script>
 	<script src="js/logs.js"></script>
+	<script src="js/help.js"></script>
 	<script src="js/ended_loading.js"></script>
 </body>
 </html>
