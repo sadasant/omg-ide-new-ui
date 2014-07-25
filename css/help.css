@@ -36,11 +36,6 @@
     width:      90%;
 }
 
-#help [class*="help-content-"] p b,
-#help [class*="help-content-"] p a {
-    color: #37a;
-}
-
 #help [class*="help-content-"] table {
     border-bottom: 1px solid #ddd;
     width:         100%;

@@ -11,6 +11,19 @@ body {
     overflow: hidden;
 }
 
+a {
+    color:           #37a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #59f;
+}
+
+p b {
+    color: #37a;
+}
+
 .no-select, .no-select-childs * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
