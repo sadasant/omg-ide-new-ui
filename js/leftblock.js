@@ -289,29 +289,20 @@ $(window).ready(function() {
             if (do_x)  $popup.css("width", popup_width);
             if (do_y) $popup.css("height", popup_height);
 
-            var link_i = null;
+            var link_x_i = $scrollXs.index($scrollXs.filter(".link-scroll.active"));
+            var link_y_i = $scrollYs.index($scrollYs.filter(".link-scroll.active"));
 
             if (do_x) $scrollXs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_x_i;
                 $e.width(widths[i] + mouse.x - x);
             });
 
             if (do_y) $scrollYs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_y_i;
                 $e.height(heights[i] + mouse.y - y);
             });
         }
@@ -362,16 +353,12 @@ $(window).ready(function() {
             $popup.css("height", popup_height);
             $popup.offset({ top: offset.top + mouse.y - y });
 
-            var link_i = null;
+            var link_y_i = $scrollYs.index($scrollYs.filter(".link-scroll.active"));
+
             $scrollYs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_y_i;
                 $e.height(heights[i] - mouse.y + y);
             });
         }
@@ -420,16 +407,12 @@ $(window).ready(function() {
 
             $popup.css("height", popup_height);
 
-            var link_i = null;
+            var link_y_i = $scrollYs.index($scrollYs.filter(".link-scroll.active"));
+
             $scrollYs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_y_i;
                 $e.height(heights[i] + mouse.y - y);
             });
         }
@@ -478,16 +461,12 @@ $(window).ready(function() {
 
             $popup.css("width", popup_width);
 
-            var link_i = null;
+            var link_x_i = $scrollXs.index($scrollXs.filter(".link-scroll.active"));
+
             $scrollXs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_x_i;
                 $e.width(widths[i] + mouse.x - x);
             });
         }
@@ -539,16 +518,12 @@ $(window).ready(function() {
             $popup.css("width", popup_width);
             $popup.offset({ left: offset.left + mouse.x - x });
 
-            var link_i = null;
+            var link_x_i = $scrollXs.index($scrollXs.filter(".link-scroll.active"));
+
             $scrollXs.each(function(i, e) {
                 var $e = $(e);
                 var has_link = $e.hasClass("link-scroll");
-                if (has_link) {
-                    if (link_i === null) {
-                        link_i = i;
-                    }
-                    i = link_i;
-                }
+                if (has_link && i > -1) i = link_x_i;
                 $(e).width(widths[i] - mouse.x + x);
             });
         }
