@@ -9,6 +9,7 @@ $(window).ready(function() {
     var $buttons = $bar.find('[class*="entypo-"]');
     var $popup   = $panel.find(".entypo-popup");
     var $editor  = $("#editor");
+    var $tabs    = $("#tabs");
 
     var $compile = $("#compile");
     var $deploy  = $("#deploy");
@@ -24,7 +25,7 @@ $(window).ready(function() {
     var $popup_scroll_left   = $("<div class='scroll_left'>");
 
     var bar_width        = 50;
-    var panel_open_width = 351;
+    var panel_open_width = 350;
 
     var css_blue_border = "1px solid #a1b8ca";
 
@@ -68,9 +69,9 @@ $(window).ready(function() {
             $content.find(".unpop").remove();
             $content.removeClass("popup");
             $content.off("mousedown", onMouseDown);
-            $block.css({ borderRight: css_blue_border});
             $panel.css({ width: 300 }, 300);
-            $editor.css({ left: panel_open_width });
+            $tabs.css({ left: panel_open_width });
+            $editor.css({ left: panel_open_width, borderLeft: css_blue_border });
         }
 
         if (is_active) {
@@ -91,12 +92,16 @@ $(window).ready(function() {
     });
 
     function openPanel(text) {
-        $block.css({ borderRight: css_blue_border});
+        $tabs.animate({ left: panel_open_width }, {
+            duration: 300,
+            queue: false
+        });
         $editor.animate({ left: panel_open_width }, {
             duration: 300,
             queue: false
         });
         $panel.animate({ width: 300 }, 300, function() {
+            $editor.css({ borderLeft: css_blue_border });
             $panel.find(".content-"+text).show();
             $popup.show();
             is_open = true;
@@ -105,12 +110,16 @@ $(window).ready(function() {
     }
 
     function closePanel() {
+        $tabs.animate({ left: bar_width }, {
+            duration: 300,
+            queue: false
+        });
         $editor.animate({ left: bar_width }, {
             duration: 300,
             queue: false
         });
         $panel.animate({ width: 0 }, 300, function() {
-            $block.css({ borderRight: "none"});
+            $editor.css({ borderLeft: 0 });
             is_open = false;
             busy    = false;
         });
@@ -122,8 +131,8 @@ $(window).ready(function() {
         var text     = $content.data("text");
         var $unpop   = $("<div class='unpop entypo-left-open'/>");
         $panel.css({ width: 0 });
-        $editor.offset({ left: bar_width });
-        $block.css({ borderRight: "none"});
+        $tabs.offset({ left: bar_width });
+        $editor.offset({ left: bar_width, borderLeft: 0 });
         $panel.find('.entypo-popup').hide();
         $content.prepend($unpop);
         $content.on("click", ".unpop", function() {

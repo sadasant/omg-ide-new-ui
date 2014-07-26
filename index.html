@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="css/chat.css"/>
 	<link rel="stylesheet" href="css/logs.css"/>
 	<link rel="stylesheet" href="css/help.css"/>
+	<link rel="stylesheet" href="css/tabs.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
 </head>
 <body>
@@ -981,12 +982,28 @@
 
 	</div>
 
+	<div id="tabs" class="no-select">
+		<div class="tab active" title="example.rb">
+			<div class="text">example.rb</div>
+			<div class="x">✖</div>
+		</div>
+		<div class="tab" title="example2.rb">
+			<div class="text">example2.rb</div>
+			<div class="x">✖</div>
+		</div>
+		<div class="tab" title="example3_with_a_big_name.rb">
+			<div class="text">example3_with_a_big_name.rb</div>
+			<div class="x">✖</div>
+		</div>
+	</div>
+
 	<div id="editor"></div>
 
 	<script src="js/lib/jquery.js"></script>
 	<script src="js/lib/ace.js"></script>
 
 	<script src="js/leftblock.js"></script>
+	<script src="js/tabs.js"></script>
 	<script src="js/editor.js"></script>
 	<script src="js/logs.js"></script>
 	<script src="js/help.js"></script>

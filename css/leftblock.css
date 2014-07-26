@@ -18,11 +18,11 @@
 }
 
 #left-bar .left-bar-logo {
-    margin-top:        10px;
-    margin-bottom:     4px;
+    margin-top:        6px;
+    margin-bottom:     -6px;
     margin-left:       0px;
-    width:             34px;
-    height:            34px;
+    width:             32px;
+    height:            32px;
     display:           inline-block;
     background-image:  url(../img/cw-logo-left-bar.png);
     background-size:   cover;

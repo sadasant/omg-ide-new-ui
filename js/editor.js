@@ -6,10 +6,14 @@ $(window).ready(function() {
     var $body    = $(document.body);
     var $editor  = $("#editor");
     var $compile = $("#compile");
+    var $tabs    = $("#tabs");
     var $block   = $("#left-block");
 
     var editor  = ace.edit("editor");
     var session = editor.getSession();
+
+    window.editor  = editor;
+    window.session = session;
 
     editor.setTheme("ace/theme/github");
     editor.setFontSize("13px");
@@ -25,7 +29,7 @@ $(window).ready(function() {
         var b_height = $body.height();
         var w_height = $window.height();
         var height   = b_height > w_height ? b_height : w_height;
-        $editor.height(height);
+        $editor.height(height - $tabs.height());
         var b_width = $body.width();
         var w_width = $window.width();
         var width   = b_width > w_width ? b_width : w_width;
