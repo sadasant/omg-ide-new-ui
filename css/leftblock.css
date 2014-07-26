@@ -209,6 +209,10 @@
     cursor:       pointer;
 }
 
+#left-panel .popup .unpop:hover {
+    color:  #37a;
+}
+
 #left-panel .content .tabs {
     margin-top:    20px;
     height:        22px;
