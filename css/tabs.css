@@ -17,10 +17,12 @@
     position:      relative;
     background:    #a1b8ca;
     color:         #356;
-    box-shadow:    0 10px 30px #269;
     border-top-right-radius: 100px 170px;
     border-top-left-radius:  100px 170px;
     cursor:        pointer;
+    -webkit-box-shadow: 0 10px 30px #269;
+       -moz-box-shadow: 0 10px 30px #269;
+            box-shadow: 0 10px 30px #269;
 }
 
 #tabs > .tab > .x {
@@ -47,11 +49,13 @@
     background:    transparent;
     height:        14px;
     width:         14px;
-    border-radius: 100%;
-    border-width:  10px;
     top:           0px;
     border-style:  solid;
     position:      absolute;
+    border-width:  10px;
+    -webkit-border-radius: 100%;
+       -moz-border-radius: 100%;
+            border-radius: 100%;
 }
 
 #tabs > .tab:before{
@@ -65,6 +69,8 @@
 #tabs > .tab:after{
   border-color:      transparent transparent transparent #a1b8ca;
   -webkit-transform: rotate(-48deg);
+     -moz-transform: rotate(-48deg);
+          transform: rotate(-48deg);
   position:          absolute;
   right:             -23px;
 }
