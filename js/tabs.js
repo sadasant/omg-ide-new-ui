@@ -1,34 +1,48 @@
 /* global $ */
 $(window).ready(function() {
 
-    var $tabs = $("#tabs .tab");
-    var $xs   = $("#tabs .x");
+    var $tabs = $("#tabs");
 
     var current = 0;
     var prev    = 0;
     var docs    = {};
 
-    $tabs.mousedown(function(e) {
+    docs["example.rb"] = window.editor.getValue();
+
+    window.docs = docs;
+
+    $tabs.on("mousedown", ".tab", function(e) {
         var $this   = $(this);
         var $target = $(e.target);
         if ($target.hasClass("x") || $this.hasClass("active")) {
             return;
         }
-        docs[$tabs.index($tabs.filter(".active"))] = window.editor.getValue();
-        $tabs.removeClass("active");
+        var name = $tabs.children(".active").attr("title");
+        docs[name] = window.editor.getValue();
+        $tabs.children().removeClass("active");
         $this.addClass("active");
         prev    = current;
-        current = $tabs.index($this);
+        current = $this.attr("title");
         window.editor.setValue(docs[current]);
         window.editor.clearSelection();
     });
 
-    $xs.click(function() {
+    $tabs.on("click", ".x", function() {
         var $this   = $(this);
         var $parent = $this.parent();
-        docs[$tabs.index($parent)] = "";
+        var name    = $parent.attr("title");
+        if ($parent.hasClass("active")) {
+            docs[name] = window.editor.getValue();
+        }
+        // TODO: save a refference directly to the element on the tab or something like
+        $('#projects .browser .project:contains("'+name+'")').children(".open").remove();
         $parent.remove();
-        $($tabs[prev]).mousedown();
+        var $prev = $tabs.children('[title*="'+prev+'"]');
+        if ($prev[0]) {
+            $prev.mousedown();
+        } else {
+            $tabs.children().first().mousedown();
+        }
     });
 
 });

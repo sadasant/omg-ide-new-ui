@@ -37,8 +37,20 @@
     display: none;
 }
 
-#projects .browser > .project:hover {
+#projects .browser .project:hover {
     color: #37a;
+}
+
+#projects .browser > .project:not(.active):hover,
+#projects .browser .project .childs .project:hover {
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap:   break-word;
+    word-break:  break-all;
+    white-space: normal;
+    overflow:    visible;
 }
 
 #projects .browser .project [class*="entypo-"] {
