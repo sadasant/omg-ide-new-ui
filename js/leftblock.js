@@ -25,7 +25,7 @@ $(window).ready(function() {
     var $popup_scroll_left   = $("<div class='scroll_left'>");
 
     var bar_width        = 50;
-    var panel_open_width = 350;
+    var panel_open_width = 300;
 
     var css_blue_border = "1px solid #a1b8ca";
 
@@ -70,8 +70,17 @@ $(window).ready(function() {
             $content.removeClass("popup");
             $content.off("mousedown", onMouseDown);
             $panel.css({ width: 300 }, 300);
-            $tabs.css({ left: panel_open_width });
-            $editor.css({ left: panel_open_width, borderLeft: css_blue_border });
+            var left  = panel_open_width + bar_width;
+            var width = $window.width() - left;
+            $tabs.css({
+                left:  left,
+                width: width
+            });
+            $editor.css({
+                left:       left,
+                width:      width,
+                borderLeft: css_blue_border
+            });
         }
 
         if (is_active) {
@@ -92,15 +101,27 @@ $(window).ready(function() {
     });
 
     function openPanel(text) {
-        $tabs.animate({ left: panel_open_width }, {
+        var left = panel_open_width + bar_width;
+        $tabs.animate({ left: left }, {
             duration: 300,
             queue: false
         });
-        $editor.animate({ left: panel_open_width }, {
+        var width = $window.width() - left;
+        $editor.animate({
+            left:  left,
+            width: width
+        }, {
             duration: 300,
             queue: false
         });
-        $panel.animate({ width: 300 }, 300, function() {
+        $tabs.animate({
+            left:  left,
+            width: width
+        }, {
+            duration: 300,
+            queue: false
+        });
+        $panel.animate({ width: panel_open_width }, 300, function() {
             $editor.css({ borderLeft: css_blue_border });
             $panel.find(".content-"+text).show();
             $popup.show();
@@ -110,11 +131,18 @@ $(window).ready(function() {
     }
 
     function closePanel() {
-        $tabs.animate({ left: bar_width }, {
+        var width = $window.width() - bar_width;
+        $tabs.animate({
+            left:  bar_width,
+            width: width
+        }, {
             duration: 300,
             queue: false
         });
-        $editor.animate({ left: bar_width }, {
+        $editor.animate({
+            left:  bar_width,
+            width: width
+        }, {
             duration: 300,
             queue: false
         });
@@ -130,9 +158,19 @@ $(window).ready(function() {
         var $content = $panel.find(".content:visible:not(.popup)");
         var text     = $content.data("text");
         var $unpop   = $("<div class='unpop entypo-left-open'/>");
+        var width    = $window.width() - bar_width;
         $panel.css({ width: 0 });
-        $tabs.offset({ left: bar_width });
-        $editor.offset({ left: bar_width, borderLeft: 0 });
+        $tabs.offset({
+            left: bar_width,
+        }).css({
+            width: width
+        });
+        $editor.offset({
+            left: bar_width,
+        }).css({
+            width:      width,
+            borderLeft: 0
+        });
         $panel.find('.entypo-popup').hide();
         $content.prepend($unpop);
         $content.on("click", ".unpop", function() {
@@ -152,10 +190,20 @@ $(window).ready(function() {
         $content.append($popup_scroll_bottom.clone());
         $content.append($popup_scroll_right.clone());
         $content.append($popup_scroll_left.clone());
-        $content.css({
-            width:  $content.data("width"),
-            height: $content.data("height")
-        });
+        // adjusting the popup dimentions
+        if ($content.data("width")) {
+            $content.css({
+                width:  $content.data("width"),
+                height: $content.data("height")
+            });
+        } else {
+            setTimeout(function() {
+                $content.css({
+                    width:  $content.width(),
+                    height: $content.height()
+                });
+            }, 100);
+        }
         var styles = $content.data("scroll-styles") || [];
         $content.find('[class*="scroll-"]').each(function(i, e) {
             if (styles[i]) {

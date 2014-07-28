@@ -1,7 +1,10 @@
 /* global $ */
 $(window).ready(function() {
 
+    var $window = $(window);
+    var $body   = $(document.body);
     var $tabs   = $("#tabs");
+    var $block  = $("#left-block");
     var $editor = $("#editor");
 
     var current = 0;
@@ -11,6 +14,18 @@ $(window).ready(function() {
     docs["example.rb"] = window.editor.getValue();
 
     window.docs = docs;
+
+    $window.resize(resize);
+
+    function resize() {
+        var w_height = $window.height();
+        var b_width = $body.width();
+        var w_width = $window.width();
+        var width   = b_width > w_width ? b_width : w_width;
+        $tabs.width(width - $block.width());
+    }
+
+    resize();
 
     $tabs.on("mousedown", ".tab", function(e) {
         var $this   = $(this);

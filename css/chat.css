@@ -1,6 +1,8 @@
 #chat {
     min-width:  270px !important;
     min-height: 208px !important;
+    max-width:  80%;
+    max-height: 80%;
 }
 
 #chat .active-users {
