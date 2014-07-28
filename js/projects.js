@@ -3,6 +3,7 @@ $(window).ready(function() {
     var $projects = $("#projects");
     var $browser  = $projects.find(".browser");
     var $tabs     = $("#tabs");
+    var $editor   = $("#editor");
 
     $browser.on("click", ".project:not(.active) .entypo-folder", function(e) {
         var $this = $(this);
@@ -27,6 +28,9 @@ $(window).ready(function() {
         } else {
             var name = $tabs.children(".active").attr("title");
             window.docs[name] = window.editor.getValue();
+            if (!$tabs.children()[0]) {
+                $editor.show();
+            }
             $tabs.append(''+
                 '<div class="tab" title="'+text+'">'+
                     '<div class="text">'+text+'</div>'+

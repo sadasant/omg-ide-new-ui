@@ -1,7 +1,8 @@
 /* global $ */
 $(window).ready(function() {
 
-    var $tabs = $("#tabs");
+    var $tabs   = $("#tabs");
+    var $editor = $("#editor");
 
     var current = 0;
     var prev    = 0;
@@ -40,8 +41,11 @@ $(window).ready(function() {
         var $prev = $tabs.children('[title*="'+prev+'"]');
         if ($prev[0]) {
             $prev.mousedown();
-        } else {
+        } else
+        if ($tabs.children()[0]){
             $tabs.children().first().mousedown();
+        } else {
+            $editor.hide();
         }
     });
 
