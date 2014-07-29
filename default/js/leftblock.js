@@ -11,7 +11,6 @@ $(window).ready(function() {
     var $editor  = $("#editor");
     var $tabs    = $("#tabs");
 
-    var $status  = $("#status");
     var $compile = $("#compile");
     var $deploy  = $("#deploy");
 
@@ -289,7 +288,6 @@ $(window).ready(function() {
         $compile.removeClass("entypo-attention");
         $compile.addClass("entypo-flash alert");
         $compile.find(".tooltip-right").text("Compiling...");
-        $status.text("Compiling...").fadeIn();
         setTimeout(function() {
             $ide_logs.append([
                 "",
@@ -311,7 +309,6 @@ $(window).ready(function() {
             $compile.removeClass("entypo-flash alert");
             $compile.addClass("entypo-check");
             $compile.find(".tooltip-right").text("Compiled");
-            $status.text("Compiled!").fadeOut();
         }, 3000);
     });
 
@@ -319,12 +316,10 @@ $(window).ready(function() {
         $deploy.removeClass("entypo-check");
         $deploy.addClass("entypo-cloud-thunder alert");
         $deploy.find(".tooltip-right").text("Deploying...");
-        $status.text("Deploying...").fadeIn();
         setTimeout(function() {
             $deploy.removeClass("entypo-cloud-thunder alert");
             $deploy.addClass("entypo-check");
             $deploy.find(".tooltip-right").text("Deployed!");
-            $status.text("Deployed!").fadeOut();
             setTimeout(function() {
                 $deploy.find(".tooltip-right").text("Deploy");
             }, 1500);

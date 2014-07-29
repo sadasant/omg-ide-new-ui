@@ -1,15 +1,19 @@
 /* global $ */
 $(window).ready(function() {
 
-    var $window  = $(window);
-    var $body    = $(document.body);
-    var $block   = $("#left-block");
-    var $bar     = $("#left-bar");
-    var $panel   = $("#left-panel");
-    var $buttons = $bar.find('[class*="entypo-"]');
-    var $popup   = $panel.find(".entypo-popup");
-    var $editor  = $("#editor");
-    var $tabs    = $("#tabs");
+    var $window     = $(window);
+    var $body       = $(document.body);
+    var $block      = $("#left-block");
+    var $bar        = $("#left-bar");
+    var $panel      = $("#left-panel");
+    var $buttons    = $bar.find('[class*="entypo-"]');
+    var $popup      = $panel.find(".entypo-popup");
+    var $editor     = $("#editor");
+    var $bottom_bar = $("#bottom_bar");
+    var $tabs       = $("#tabs");
+
+    var $resize_group = $($tabs).add($bottom_bar).add($editor);
+    var $border_group = $($tabs).add($bottom_bar).add($editor);
 
     var $status  = $("#status");
     var $compile = $("#compile");
@@ -73,13 +77,11 @@ $(window).ready(function() {
             $panel.css({ width: 300 }, 300);
             var left  = panel_open_width + bar_width;
             var width = $window.width() - left;
-            $tabs.css({
+            $resize_group.css({
                 left:  left,
                 width: width
             });
-            $editor.css({
-                left:       left,
-                width:      width,
+            $border_group.css({
                 borderLeft: css_blue_border
             });
         }
@@ -108,14 +110,7 @@ $(window).ready(function() {
             queue: false
         });
         var width = $window.width() - left;
-        $editor.animate({
-            left:  left,
-            width: width
-        }, {
-            duration: 300,
-            queue: false
-        });
-        $tabs.animate({
+        $resize_group.animate({
             left:  left,
             width: width
         }, {
@@ -123,7 +118,7 @@ $(window).ready(function() {
             queue: false
         });
         $panel.animate({ width: panel_open_width }, 300, function() {
-            $editor.css({ borderLeft: css_blue_border });
+            $border_group.css({ borderLeft: css_blue_border });
             $panel.find(".content-"+text).show();
             $popup.show();
             is_open = true;
@@ -133,14 +128,7 @@ $(window).ready(function() {
 
     function closePanel() {
         var width = $window.width() - bar_width;
-        $tabs.animate({
-            left:  bar_width,
-            width: width
-        }, {
-            duration: 300,
-            queue: false
-        });
-        $editor.animate({
+        $resize_group.css({
             left:  bar_width,
             width: width
         }, {
@@ -148,7 +136,7 @@ $(window).ready(function() {
             queue: false
         });
         $panel.animate({ width: 0 }, 300, function() {
-            $editor.css({ borderLeft: 0 });
+            $border_group.css({ borderLeft: 0 });
             is_open = false;
             busy    = false;
         });
@@ -161,15 +149,12 @@ $(window).ready(function() {
         var $unpop   = $("<div class='unpop entypo-left-open'/>");
         var width    = $window.width() - bar_width;
         $panel.css({ width: 0 });
-        $tabs.offset({
+        $resize_group.css({
             left: bar_width,
         }).css({
             width: width
         });
-        $editor.offset({
-            left: bar_width,
-        }).css({
-            width:      width,
+        $border_group.css({
             borderLeft: 0
         });
         $panel.find('.entypo-popup').hide();
