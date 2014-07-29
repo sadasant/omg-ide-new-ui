@@ -95,12 +95,13 @@ $(window).ready(function() {
     setInterval(update, 500);
 
     function update() {
-        var pos  = editor.getCursorPosition();
-        var name = $tabs.children(".active").attr("title");
+        var pos     = editor.getCursorPosition();
+        var name    = $tabs.children(".active").attr("title");
+        var changed = $compile.hasClass("entypo-attention") ? "*" : "";
 
-        var left  = $("<div class='left' />");
+        var left = $("<div class='left' />");
         left.html([
-            name,
+            name+changed,
             pos.row+","+pos.column,
             name.indexOf(".rb") === name.length - 3 ? "Ruby" : "POSXML"
         ].join("&nbsp;&nbsp;&nbsp;"));
