@@ -1,6 +1,11 @@
 #projects.popup {
     min-width:  178px;
-    min-height: 118px;
+    min-height: 120px;
+    width:      200px;
+}
+
+#projects.popup .browser {
+    width: 180px;
 }
 
 #projects.popup .title {
@@ -16,7 +21,7 @@
     height:         86%;
     overflow-y:     scroll;
     min-width:      158px;
-    min-height:     60px;
+    min-height:     80px;
 }
 
 #projects.popup .browser {
