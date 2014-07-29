@@ -199,6 +199,12 @@ $(window).ready(function() {
             });
         } else {
             setTimeout(function() {
+                var $scrolls = $content.find('[class*="scroll-"]');
+                $scrolls.each(function(_, e) {
+                    var $e = $(e);
+                    $e.width($e.width());
+                    $e.height($e.height());
+                });
                 $content.css({
                     width:  $content.width(),
                     height: $content.height()
