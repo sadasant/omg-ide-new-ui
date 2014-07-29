@@ -86,6 +86,7 @@ $(window).ready(function() {
         if (!$compile.hasClass("entypo-check")) return;
         $compile.removeClass("entypo-check");
         $compile.addClass("entypo-attention");
+        $compile.find(".tooltip-right").text("Compile");
     });
 
     editor.moveCursorTo(0, 0);
