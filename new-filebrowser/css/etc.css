@@ -1,0 +1,57 @@
+html,body {
+    font-family: sans-serif;
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    overflow:   hidden;
+    background: #37a;
+}
+
+a {
+    color:           #37a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #59f;
+}
+
+p b {
+    color: #37a;
+}
+
+.no-select, .no-select-childs * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#loading {
+    position:   fixed;
+    width:      100%;
+    height:     100%;
+    background: #37a;
+    display:    block;
+    z-index:    11;
+    text-align: center;
+}
+
+#loading #loading-animation {
+    width:      auto;
+    height:     auto;
+    display:    inline-block;
+    margin-top: 15%;
+    font-size:  72px;
+    color:      white;
+    -webkit-animation: tumble 1.5s linear infinite;
+       -moz-animation: tumble 1.5s linear infinite;
+            animation: tumble 1.5s linear infinite;
+}
