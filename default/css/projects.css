@@ -1,0 +1,113 @@
+#projects.popup {
+    min-width:  268px;
+    min-height: 118px;
+}
+
+#projects .browser {
+    padding:        10px;
+    padding-bottom: 15px;
+    margin-top:     15px;
+    background:     white;
+    border-radius:  3px;
+    border:         1px solid #bbb;
+    text-align:     center;
+    display:        inline-block;
+    height:         86%;
+    overflow-y:     scroll;
+    min-width:      248px;
+    min-height:     60px;
+}
+
+#projects .browser > .project,
+#projects .browser > .project.active .childs > .project {
+    width:         86px;
+    height:        40px;
+    font-size:     12px;
+    overflow:      hidden;
+    float:         left;
+    display:       none;
+    padding:       10px 15px 15px;
+    white-space:   nowrap;
+    text-overflow: ellipsis;
+    text-align:    center;
+    cursor:        pointer;
+}
+
+#projects .browser > .project .childs {
+    display: none;
+}
+
+#projects .browser .project:hover {
+    color: #37a;
+}
+
+#projects .browser > .project:not(.active):hover,
+#projects .browser .project .childs .project:hover {
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap:   break-word;
+    word-break:  break-all;
+    white-space: normal;
+    overflow:    visible;
+}
+
+#projects .browser .project [class*="entypo-"] {
+    font-size:     32px;
+    margin-bottom: 5px;
+}
+
+#projects .browser .project .open {
+    width:       10px;
+    height:      10px;
+    position:    absolute;
+    display:     inline-block;
+    margin-left: 18px;
+}
+
+#projects .browser .project .open [class*="entypo-"] {
+    font-size: 12px;
+}
+
+#projects .browser .project.active {
+    display:    inline-block;
+    width:      90%;
+    height:     auto;
+    font-size:  12px;
+    text-align: left;
+}
+
+#projects .browser .project.active:hover {
+    color: inherit;
+}
+
+#projects .browser .project.active > [class*="entypo-"] {
+    font-size:    22px;
+    cursor:       pointer;
+    float:        left;
+    margin-right: 15px;
+    margin-top:   -7px;
+    display:      inline-block;
+}
+
+#projects .browser .project.active > [class*="entypo-"]:hover {
+    color: #37a;
+}
+
+#projects .browser .project.active .childs {
+    display:     inline-block;
+    width:       100%;
+    height:      100%;
+    float:       left;
+    clear:       both;
+    margin-top:  5px;
+    padding-top: 10px;
+    border-top:  1px solid #f5f5f5;
+}
+
+#projects .browser .project.active .childs .project {
+    display: inline-block;
+    width:   90px;
+    padding: 5px 5px 22px;
+}
