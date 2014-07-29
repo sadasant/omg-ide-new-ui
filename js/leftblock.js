@@ -199,16 +199,36 @@ $(window).ready(function() {
             });
         } else {
             setTimeout(function() {
-                var $scrolls = $content.find('[class*="scroll-"]');
-                $scrolls.each(function(_, e) {
+                var $scrollsX = $content.find('.scroll-x');
+                var $linkX    = $scrollsX.filter(".link-scroll.active");
+                $scrollsX.each(function(_, e) {
                     var $e = $(e);
-                    $e.width($e.width());
-                    $e.height($e.height());
+                    if ($e.hasClass("link-scroll")) {
+                        $e.width($linkX.width());
+                        $e.height($linkX.height());
+                    } else {
+                        $e.width($e.width());
+                        $e.height($e.height());
+                    }
                 });
-                $content.css({
-                    width:  $content.width(),
-                    height: $content.height()
+                var $scrollsY = $content.find('.scroll-y');
+                var $linkY    = $scrollsY.filter(".link-scroll.active");
+                $scrollsY.each(function(_, e) {
+                    var $e = $(e);
+                    if ($e.hasClass("link-scroll")) {
+                        $e.width($linkY.width());
+                        $e.height($linkY.height());
+                    } else {
+                        $e.width($e.width());
+                        $e.height($e.height());
+                    }
                 });
+                setTimeout(function() {
+                    $content.css({
+                        width:  $content.width(),
+                        height: $content.height()
+                    });
+                }, 100);
             }, 100);
         }
         var styles = $content.data("scroll-styles") || [];
