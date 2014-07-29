@@ -2,12 +2,14 @@
 /* global ace */
 $(window).ready(function() {
 
-    var $window  = $(window);
-    var $body    = $(document.body);
-    var $editor  = $("#editor");
-    var $compile = $("#compile");
-    var $tabs    = $("#tabs");
-    var $block   = $("#left-block");
+    var $window     = $(window);
+    var $body       = $(document.body);
+    var $editor     = $("#editor");
+    var $bottom_bar = $("#bottom_bar");
+    var $compile    = $("#compile");
+    var $deploy     = $("#deploy");
+    var $tabs       = $("#tabs");
+    var $block      = $("#left-block");
 
     var editor  = ace.edit("editor");
     var session = editor.getSession();
@@ -30,10 +32,13 @@ $(window).ready(function() {
         var w_height = $window.height();
         var height   = b_height > w_height ? b_height : w_height;
         $editor.height(height - $tabs.height());
-        var b_width = $body.width();
-        var w_width = $window.width();
-        var width   = b_width > w_width ? b_width : w_width;
-        $editor.width(width - $block.width());
+        var b_width     = $body.width();
+        var w_width     = $window.width();
+        var width       = b_width > w_width ? b_width : w_width;
+        var block_width = $block.width();
+        $editor.width(width - block_width);
+        $editor.height($(".ace_gutter").height() - 22);
+        $bottom_bar.width(width - block_width - 40);
     }
 
     resize();
@@ -81,5 +86,36 @@ $(window).ready(function() {
         if (!$compile.hasClass("entypo-check")) return;
         $compile.removeClass("entypo-check");
         $compile.addClass("entypo-attention");
+        $compile.find(".tooltip-right").text("Compile");
     });
+
+    editor.moveCursorTo(0, 0);
+
+    // BOTTOM BAR
+
+    setInterval(update, 500);
+
+    function update() {
+        var pos     = editor.getCursorPosition();
+        var name    = $tabs.children(".active").attr("title");
+        var changed = $compile.hasClass("entypo-attention") ? "*" : "";
+
+        var left = $("<div class='left' />");
+        left.html([
+            name+changed,
+            pos.row+","+pos.column,
+            name.indexOf(".rb") === name.length - 3 ? "Ruby" : "POSXML"
+        ].join("&nbsp;&nbsp;&nbsp;"));
+
+        var right = $("<div class='right' />");
+        right.text([
+            $compile.find(".tooltip-right").text() === "Compiling..." ? "Compiling..." : "",
+            $deploy.find(".tooltip-right").text() === "Deploying..." ? "Deploying..." : "",
+        ].join(" "));
+
+        $bottom_bar.html("").append(left, right);
+    }
+
+    update();
+
 });
