@@ -33,22 +33,24 @@
 }
 
 #projects .browser .project.active {
-    background:    #fff;
-    margin-left:   -10px !important;
-    padding-left:  34px;
-    padding-top:   3px;
-    margin-bottom: 5px;
+    background:   #fff;
+    margin-left:  -10px !important;
+    padding-left: 34px;
 }
 
 #projects .browser > .project,
 #projects .browser > .project.open .childs > .project {
-    width:         100%;
-    height:        auto;
-    font-size:     12px;
-    float:         left;
-    white-space:   nowrap;
-    text-overflow: ellipsis;
-    cursor:        pointer;
+    width:          100%;
+    height:         auto;
+    padding-top:    2px;
+    padding-bottom: 2px;
+    margin-top:     1px;
+    margin-bottom:  1px;
+    font-size:      12px;
+    float:          left;
+    white-space:    nowrap;
+    text-overflow:  ellipsis;
+    cursor:         pointer;
 }
 
 #projects .browser > .project:hover,
@@ -77,7 +79,6 @@
 #projects .browser .project [class*="entypo-"] {
     font-size:     20px;
     width:         20px;
-    margin-bottom: 5px;
     margin-right:  5px;
     display:       inline-block;
 }
