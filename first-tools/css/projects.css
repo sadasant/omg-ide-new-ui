@@ -1,0 +1,124 @@
+#projects.popup {
+    min-width:  178px;
+    min-height: 120px;
+    width:      200px;
+}
+
+#projects.popup .browser {
+    width: 180px;
+}
+
+#projects.popup .title {
+    display: none;
+}
+
+#projects .browser {
+    padding:        10px;
+    padding-bottom: 15px;
+    margin-top:     15px;
+    box-shadow:     inset 0px 0px 10px #eee;
+    display:        inline-block;
+    height:         86%;
+    overflow-y:     scroll;
+    min-width:      158px;
+    min-height:     80px;
+}
+
+#projects.popup .browser {
+    border-radius: 2px;
+}
+
+#projects:not(.popup) .browser {
+    max-width: 90%;
+}
+
+#projects .browser .project.active {
+    background:    #fff;
+    margin-left:   -10px !important;
+    padding-left:  34px;
+    padding-top:   3px;
+    margin-bottom: 5px;
+}
+
+#projects .browser > .project,
+#projects .browser > .project.open .childs > .project {
+    width:         100%;
+    height:        auto;
+    font-size:     12px;
+    float:         left;
+    white-space:   nowrap;
+    text-overflow: ellipsis;
+    cursor:        pointer;
+}
+
+#projects .browser > .project:hover,
+#projects .browser > .project.open .childs > .project:hover {
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap:   break-word;
+    word-break:  break-all;
+    white-space: normal;
+    overflow:    visible;
+}
+
+#projects .browser > .project:not(.open) .childs {
+    display: none;
+}
+
+#projects .browser .project:hover:not(.open),
+#projects .browser .project:hover .entypo-plus,
+#projects .browser .project:hover:not(.open) .entypo-minus,
+#projects .browser .project .entypo-minus:hover {
+    color: #37a;
+}
+
+#projects .browser .project [class*="entypo-"] {
+    font-size:     20px;
+    width:         20px;
+    margin-bottom: 5px;
+    margin-right:  5px;
+    display:       inline-block;
+}
+
+#projects .browser > .project .entypo-doc-text {
+    margin-right: 0;
+}
+
+#projects .browser > .project .childs > .project .entypo-doc-text {
+    margin-right: 8px;
+}
+
+#projects .browser .project .entypo-plus,
+#projects .browser .project .entypo-minus {
+    color:   #bbb;
+    margin:  0;
+    padding: 0;
+}
+
+#projects .browser .project .open:not(.project) {
+    display: inline;
+    color:   #37f;
+    width:   0;
+}
+
+#projects .browser .project .open [class*="entypo-"] {
+    font-size:    17px;
+    margin-left:  -12px;
+    margin-right: 12px;
+    width:        0;
+}
+
+#projects .browser .project .childs > .project > .open [class*="entypo-"] {
+    margin-left:  -20px;
+    margin-right: 20px;
+}
+
+#projects .browser .project .childs > .project {
+    overflow-x:  hidden;
+    margin-left: 24px;
+    width: -webkit-calc(100% - 14px) !important;
+    width:    -moz-calc(100% - 14px) !important;
+    width:         calc(100% - 14px) !important;
+}
