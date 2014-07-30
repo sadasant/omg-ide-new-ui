@@ -39,7 +39,9 @@ $(window).ready(function() {
         $this.addClass("active");
         $("#projects .browser .project .open.active").removeClass("active");
         var this_name = $this.attr("title");
-        $('#projects .browser .project:not(.open):contains("'+this_name+'")').children(".open").addClass("active");
+        var $project = $('#projects .browser .project:not(.open):contains("'+this_name+'")');
+        $project.children(".open").addClass("active");
+        $project.parent().parent().children(".entypo-plus").click();
         prev    = current;
         current = $this.attr("title");
         window.editor.setValue(docs[current]);
