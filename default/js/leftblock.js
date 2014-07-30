@@ -159,13 +159,14 @@ $(window).ready(function() {
         });
         $panel.find('.entypo-popup').hide();
         $content.prepend($unpop);
-        $content.on("click", ".unpop", function() {
+        $unpop.on("click", function() {
             $content.data("width", $content.width());
             $content.data("height", $content.height());
             $content.css({ width: "", height: "" });
             $content.find('[class*="scroll_"]').remove();
-            $content.data("scroll-styles", $content.find('[class*="scroll-"]').map(function(_,e) { return $(e).attr("style"); }));
-            $content.find('[class*="scroll-"]').attr("style", "");
+            var $scrolls = $content.find('[class*="scroll-"]');
+            $content.data("scroll-styles", $scrolls.map(function(_,e) { return $(e).attr("style"); }));
+            $scrolls.attr("style", "");
             $bar.find(".tooltip-right:contains("+text+")").parent().click();
         });
         $content.addClass("popup");

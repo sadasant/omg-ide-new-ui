@@ -118,6 +118,10 @@
 }
 
 #left-panel .content .title {
+    font-size:   14px;
+    color:       #888;
+    text-shadow: 1px 1px white;
+    margin-left: 3px;
 }
 
 #left-panel .popup {

@@ -55,3 +55,8 @@ p b {
        -moz-animation: tumble 1.5s linear infinite;
             animation: tumble 1.5s linear infinite;
 }
+
+.entypo-attention,
+.entypo-attention:before {
+    color: #fc4 !important;
+}

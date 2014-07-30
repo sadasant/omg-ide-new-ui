@@ -5,16 +5,17 @@ $(window).ready(function() {
     var $tabs     = $("#tabs");
     var $editor   = $("#editor");
 
-    $browser.on("click", ".project:not(.active) .entypo-folder", function(e) {
+    $browser.on("click", ".project:not(.open) .entypo-folder, .project:not(.open) .entypo-plus", function(e) {
         var $this = $(this);
         $browser.children(".project").attr("style", "");
-        $this.parent().addClass("active");
+        $this.parent().addClass("open")
+        .find(".entypo-plus").removeClass("entypo-plus").addClass("entypo-minus");
     });
 
-    $browser.on("click", ".project.active .entypo-folder", function(e) {
+    $browser.on("click", ".project.open .entypo-folder, .project.open .entypo-minus", function(e) {
         var $this = $(this);
-        $this.parent().removeClass("active");
-        $browser.children(".project").show();
+        $this.parent().removeClass("open")
+        .find(".entypo-minus").removeClass("entypo-minus").addClass("entypo-plus");
     });
 
     $browser.on("click", ".project", function(e) {
@@ -26,7 +27,7 @@ $(window).ready(function() {
         if ($this.children(".open")[0]) {
             $tabs.find('[title*="'+text+'"]').mousedown();
         } else {
-            var name = $tabs.children(".active").attr("title");
+            var name = $tabs.children(".open").attr("title");
             window.docs[name] = window.editor.getValue();
             if (!$tabs.children()[0]) {
                 $editor.show();
@@ -37,7 +38,8 @@ $(window).ready(function() {
                     '<div class="x">✖</div>'+
                 '</div>'
             ).children().last().mousedown();
-            $this.prepend('<div class="open"><div class="entypo-eye"></div></div>');
+            var $pencil = $('<div class="open active"><div class="entypo-pencil"></div></div>');
+            $this.find('[class*="entypo-"]').first().after($pencil);
         }
     });
 });
