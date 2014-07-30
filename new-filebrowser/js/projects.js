@@ -38,7 +38,7 @@ $(window).ready(function() {
                     '<div class="x">✖</div>'+
                 '</div>'
             ).children().last().mousedown();
-            var $pencil = $('<div class="open"><div class="entypo-pencil"></div></div>');
+            var $pencil = $('<div class="open active"><div class="entypo-pencil"></div></div>');
             $this.find('[class*="entypo-"]').first().after($pencil);
         }
     });

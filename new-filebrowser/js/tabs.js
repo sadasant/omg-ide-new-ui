@@ -37,6 +37,9 @@ $(window).ready(function() {
         docs[name] = window.editor.getValue();
         $tabs.children().removeClass("active");
         $this.addClass("active");
+        $("#projects .browser .project .open.active").removeClass("active");
+        var this_name = $this.attr("title");
+        $('#projects .browser .project:not(.open):contains("'+this_name+'")').children(".open").addClass("active");
         prev    = current;
         current = $this.attr("title");
         window.editor.setValue(docs[current]);

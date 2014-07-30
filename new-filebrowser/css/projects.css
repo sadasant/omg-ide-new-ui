@@ -95,6 +95,14 @@
     width:   0;
 }
 
+#projects .browser .project .open.active:not(.project) {
+    color: #fc4;
+    text-shadow:  1px  1px 0px #e99,
+                 -1px -1px 0px #e99,
+                 -1px  1px 0px #e99,
+                  1px -1px 0px #e99;
+}
+
 #projects .browser .project .open [class*="entypo-"] {
     font-size:    17px;
     margin-left:  -12px;
