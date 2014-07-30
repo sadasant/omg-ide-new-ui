@@ -17,6 +17,10 @@
     float:      left;
 }
 
+#left-bar > br {
+    line-height: 30px;
+}
+
 #left-bar .left-bar-logo {
     margin-top:        6px;
     margin-bottom:     -6px;
