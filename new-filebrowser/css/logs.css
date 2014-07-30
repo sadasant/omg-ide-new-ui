@@ -8,7 +8,7 @@
 }
 
 #logs .tabs li.active {
-    background:   #000 !important;
+    background:   #222f44 !important;
     color:        white !important;
     border-color: #333 !important;
 }
@@ -16,7 +16,7 @@
 #logs [class*="logs-content-"] {
     height:        90%;
     width:         250px;
-    background:    black;
+    background:    #234;
     border-radius: 0 0 3px 3px;
     min-height:    100px;
     padding:       5px 10px;
@@ -44,12 +44,13 @@
 }
 
 #logs.popup .tabs li.active {
-    background: rgba(0,0,0,.9) !important;
-    margin-top: -1px;
+    background:   rgba(24, 51, 78, .8) !important;
+    margin-top:   -1px;
+    border-color: rgba(24, 51, 78, .3) !important;
 }
 
 #logs.popup [class*="logs-content-"] {
-    background: rgba(0,0,0,.9);
+    background: rgba(24, 51, 78, .8);
     min-width:  170px;
     min-height: 150px;
 }
