@@ -37,10 +37,10 @@ $(window).ready(function() {
         docs[name] = window.editor.getValue();
         $tabs.children().removeClass("active");
         $this.addClass("active");
-        $("#projects .browser .project .open.active").removeClass("active");
+        $("#projects .browser .project.active").removeClass("active");
         var this_name = $this.attr("title");
         var $project = $('#projects .browser .project:not(.open):contains("'+this_name+'")');
-        $project.children(".open").addClass("active");
+        $project.last().addClass("active");
         $project.parent().parent().children(".entypo-plus").click();
         prev    = current;
         current = $this.attr("title");

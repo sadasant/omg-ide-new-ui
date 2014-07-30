@@ -32,6 +32,14 @@
     max-width: 90%;
 }
 
+#projects .browser .project.active {
+    background:    #fff;
+    margin-left:   -10px !important;
+    padding-left:  34px;
+    padding-top:   3px;
+    margin-bottom: 5px;
+}
+
 #projects .browser > .project,
 #projects .browser > .project.open .childs > .project {
     width:         100%;
@@ -95,14 +103,6 @@
     width:   0;
 }
 
-#projects .browser .project .open.active:not(.project) {
-    color: #fc4;
-    text-shadow:  1px  1px 0px #e99,
-                 -1px -1px 0px #e99,
-                 -1px  1px 0px #e99,
-                  1px -1px 0px #e99;
-}
-
 #projects .browser .project .open [class*="entypo-"] {
     font-size:    17px;
     margin-left:  -12px;
@@ -115,10 +115,10 @@
     margin-right: 20px;
 }
 
-#projects .browser .project .childs {
-    margin-left: 24px;
-}
-
 #projects .browser .project .childs > .project {
-    overflow-x: hidden;
+    overflow-x:  hidden;
+    margin-left: 24px;
+    width: -webkit-calc(100% - 14px) !important;
+    width:    -moz-calc(100% - 14px) !important;
+    width:         calc(100% - 14px) !important;
 }
