@@ -128,7 +128,7 @@ $(window).ready(function() {
 
     function closePanel() {
         var width = $window.width() - bar_width;
-        $resize_group.css({
+        $resize_group.animate({
             left:  bar_width,
             width: width
         }, {
