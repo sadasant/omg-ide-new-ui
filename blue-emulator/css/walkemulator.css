@@ -2,7 +2,7 @@
 
 #emulator-container {
     left:          0;
-    background:    #333742;
+    background:    #1d5583;
     width:         265px !important;
     height:        560px !important;
     display:       block;
@@ -118,7 +118,7 @@
 
 /* Printer */
 #emulator-printer {
-    background:    #4f4836;
+    background:    #36484f;
     height:        50px;
     width:         100%;
     margin-bottom: 30px;
@@ -139,7 +139,7 @@
     height:      0px;
     margin-left: 13px;
     margin-top:  51px;
-    border:      1px solid #202225;
+    border:      1px solid #333;
     border-top:  1px dashed #ddd;
 }
 
@@ -153,7 +153,7 @@
     font-size:     16px;
     line-height:   16px;
     font-family:   sans-serif;
-    color:         #999;
+    color:         #fff;
     font-size:     11px;
     -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -173,10 +173,10 @@
 
 /* Screen */
 #emulator-screen {
-    background-color: #bbb;
+    background-color: #bbc3cf;
     margin:           0 auto;
     width:            237px;
-    border:           1px solid #202225;
+    border:           1px solid #204265;
     overflow:         hidden;
     box-sizing:       border-box;
     -webkit-border-radius: 3px;
@@ -184,11 +184,11 @@
          -o-border-radius: 3px;
         -ms-border-radius: 3px;
             border-radius: 3px;
-    -webkit-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
-       -moz-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
-         -o-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
-        -ms-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
-            box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+    -webkit-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #336;
+       -moz-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #336;
+         -o-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #336;
+        -ms-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #336;
+            box-shadow: inset 0 2px 2px #5E6370, 0px 1px #336;
     -webkit-transition: background-color 150ms linear;
        -moz-transition: background-color 150ms linear;
          -o-transition: background-color 150ms linear;
@@ -299,16 +299,17 @@
     font-family:      sans-serif;
     vertical-align:   top;
     line-height:      12px;
-    background-color: #aaa;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    box-shadow: inset 0 -4px 1px rgba(0,0,0, .2),
-                inset 0 -3px 2px rgba(0,0,0, .2),
-                inset 0 -4px 3px rgba(255,255,255, .2),
-                inset 0 0px 2px rgba(0,0,0, .3),
-                inset 0 1px 3px rgba(255,255,255, .3),
-                0 0 2px rgba(0,0,0, .5),
-                0 0 4px rgba(0,0,0, .5),
-                0 -4px 8px rgba(255,255,255, .1);
+    background-color: #9bb2c6;
+    -webkit-tap-highlight-color:  rgba(  0,   0,   0, 0.00);
+    text-shadow:       1px 1px    rgba(  0,   0,   0,  .1 );
+    box-shadow:  inset 0 -4px 1px rgba(  0,  20,  40,  .15),
+                 inset 0 -3px 2px rgba(  0,  20,  40,  .15),
+                 inset 0 -4px 3px rgba(255, 255, 255,  .15),
+                 inset 0  0px 2px rgba(  0,  20,  40,  .3 ),
+                 inset 0  1px 3px rgba(255, 255, 255,  .3 ),
+                       0  0   2px rgba(  0,   0,   0,  .5 ),
+                       0  0   4px rgba(  0,   0,   0,  .5 ),
+                       0 -4px 8px rgba(255, 255, 255,  .1 );
 }
 
 #emulator-keyboard button.btn-number {
@@ -350,18 +351,18 @@
     padding-top: 0px;
 }
 
-#btn-power      { background-color: #298a43 !important; }
-#btn-power.stop { background-color: #ba453c !important; }
+#btn-power      { background-color: #29aa43 !important; }
+#btn-power.stop { background-color: #ca353c !important; }
 
-#btn-alpha  { background-color: #3c57ba !important; }
-#btn-cancel { background-color: #ba453c !important; }
+#btn-alpha  { background-color: #0c77ca !important; }
+#btn-cancel { background-color: #ca353c !important; }
 #btn-clear  { background-color: #e5b723 !important; }
-#btn-enter  { background-color: #298a43 !important; }
+#btn-enter  { background-color: #29aa43 !important; }
 
-#btn-power:active      { background-color: #1d8037 !important; }
-#btn-power:active.stop { background-color: #af382f !important; }
+#btn-power:active      { background-color: #369949 !important; }
+#btn-power:active.stop { background-color: #b33446 !important; }
 
-#btn-alpha:active  { background-color: #3049a5 !important; }
-#btn-cancel:active { background-color: #af382f !important; }
+#btn-alpha:active  { background-color: #1370b5 !important; }
+#btn-cancel:active { background-color: #b33446 !important; }
 #btn-clear:active  { background-color: #d4a81a !important; }
-#btn-enter:active  { background-color: #1d8037 !important; }
+#btn-enter:active  { background-color: #369949 !important; }
