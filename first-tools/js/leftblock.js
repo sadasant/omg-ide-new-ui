@@ -357,8 +357,8 @@ $(window).ready(function() {
             var popup_width  = width  + mouse.x - x;
             var popup_height = height + mouse.y - y;
 
-            var do_x = popup_width  <= $window.width()*0.8  || popup_width  < $popup.width();
-            var do_y = popup_height <= $window.height()*0.8 || popup_height < $popup.height();
+            var do_x = popup_width  <= $window.width()*0.85  || popup_width  < $popup.width();
+            var do_y = popup_height <= $window.height()*0.85 || popup_height < $popup.height();
 
             if (do_x)  $popup.css("width", popup_width);
             if (do_y) $popup.css("height", popup_height);
