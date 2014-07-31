@@ -39,7 +39,7 @@
     background:    #ff9;
     position:      absolute;
     margin-top:    -14px;
-    margin-left:   209px;
+    margin-left:   210px;
     padding:       0 10px;
     border-radius: 0 10px 10px 0;
     color:         #aa2;
@@ -53,6 +53,9 @@
     padding:    0 10px 0 0;
     box-shadow: inset 0px 0px 10px #eee;
     height:     80%;
+    height: -webkit-calc(100% - 134px);
+    height:    -moz-calc(100% - 134px);
+    height:         calc(100% - 134px);
 }
 
 #chat.popup .conversation {
