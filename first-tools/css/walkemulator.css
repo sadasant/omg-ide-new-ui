@@ -1,0 +1,367 @@
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+#emulator-container {
+    left:          0;
+    background:    #333742;
+    width:         265px !important;
+    height:        550px !important;
+    display:       block;
+    padding-top:   0px;
+    border-radius: 4px 4px 8px 8px;
+    box-shadow:    inset 0 -8px 2px rgba(0, 0, 0, .2);
+    font-size:     16px;
+    font-family:   sans-serif;
+}
+
+#emulator-container iframe {
+    display:  none;
+    position: fixed;
+    top:      0;
+    left:     0;
+    width:    0;
+    height:   0;
+    z-index:  -1;
+}
+
+/* Body */
+#emulator-body {
+    margin:      0px auto 0 auto;
+    width:       100%;
+    height:      560px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+         -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+            border-radius: 5px;
+}
+
+/* Paper */
+#emulator-paper-container {
+    float: left;
+}
+
+#emulator-paper {
+    background:  white;
+    height:      6px;
+    width:       234px;
+    margin-left: 15px;
+    margin-top:  45px;
+    font-size:   10px;
+    cursor:      pointer;
+    overflow:    hidden;
+    box-shadow:  0 -6px 3px rgba(0,0,0,.2),
+                 inset 0 -1px 2px rgba(0,0,0,.2);
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+#emulator-paper:active {
+    background: #eee;
+}
+
+#emulator-paper.full {
+    position:    absolute;
+    height:      400px !important;
+    margin-top:  16px !important;
+    overflow-y:  scroll;
+    width:       246px;
+    margin-left: 10px;
+    font-size:   12px;
+    z-index:     2;
+    letter-spacing: -1px;
+    -webkit-user-select: text;
+     -khtml-user-select: text;
+       -moz-user-select: text;
+        -ms-user-select: text;
+            user-select: text;
+}
+
+#emulator-paper #emulator-paper-content {
+    padding:     6px 10px;
+    line-height: normal;
+}
+
+#emulator-paper p {
+    font-family: "Inconsolata", monospace;
+    display:     inline-block;
+    line-height: 10px;
+    padding:     0;
+    margin:      0;
+    width:       100%;
+    color:       black;
+}
+
+#emulator-paper p.big {
+    font-size:   20px;
+    line-height: 16px;
+}
+
+#emulator-paper.full p.big {
+    font-size:   21px;
+}
+
+#emulator-paper img {
+    margin-left:   -67px;
+    margin-bottom: -15px;
+    margin-top:    -15px;
+    max-width:     initial;
+    -webkit-transform: scale(0.65); /* Saf3.1+, Chrome */
+       -moz-transform: scale(0.65); /* FF3.5+ */
+        -ms-transform: scale(0.65); /* IE9 */
+         -o-transform: scale(0.65); /* Opera 10.5+ */
+            transform: scale(0.65);
+}
+
+/* Printer */
+#emulator-printer {
+    background:    #4f4836;
+    height:        50px;
+    width:         100%;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #202225;
+    border-radius: 4px 4px 0 0;
+    cursor:        pointer;
+    top:           0;
+    box-shadow:    inset 0 0 30px #252a27,
+                   inset 20px 0 3px rgba(37, 42, 39, .5),
+                   inset -20px 0 3px rgba(37, 42, 39, .5);
+}
+
+#emulator-printer:after {
+    content:     " ";
+    clear:       both;
+    display:     block;
+    width:       235px;
+    height:      0px;
+    margin-left: 13px;
+    margin-top:  51px;
+    border:      1px solid #202225;
+    border-top:  1px dashed #ddd;
+}
+
+#emulator-printer-cut {
+    float:         left;
+    height:        0;
+    margin-top:    2px;
+    margin-bottom: -15px;
+    margin-left:   228px;
+    font-family:   monospace;
+    font-size:     16px;
+    line-height:   16px;
+    font-family:   sans-serif;
+    color:         #999;
+    font-size:     11px;
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+#emulator-printer-cut:hover {
+    color:  white;
+    cursor: pointer;
+}
+#emulator-printer-cut:active {
+    color: #999;
+}
+
+/* Screen */
+#emulator-screen {
+    background-color: #bbb;
+    margin:           0 auto;
+    width:            237px;
+    border:           1px solid #202225;
+    overflow:         hidden;
+    box-sizing:       border-box;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+         -o-border-radius: 3px;
+        -ms-border-radius: 3px;
+            border-radius: 3px;
+    -webkit-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+       -moz-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+         -o-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+        -ms-box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+            box-shadow: inset 0 2px 2px #5E6370, 0px 1px #333;
+    -webkit-transition: background-color 150ms linear;
+       -moz-transition: background-color 150ms linear;
+         -o-transition: background-color 150ms linear;
+        -ms-transition: background-color 150ms linear;
+            transition: background-color 150ms linear;
+}
+
+#emulator-screen.active {
+    background-color: #c2e2f9;
+}
+
+#emulator-screen.loading:before {
+    content:     "";
+    display:     block;
+    width:       130px;
+    height:      10px;
+    border:      1px solid #333;
+    margin-left: 50px;
+    margin-top:  80px;
+    position:    absolute;
+    -webkit-animation: emulator-loading 20s infinite ease-out;
+       -moz-animation: emulator-loading 20s infinite ease-out;
+        -ms-animation: emulator-loading 20s infinite ease-out;
+            animation: emulator-loading 20s infinite ease-out;
+}
+
+@-webkit-keyframes emulator-loading { 0% { box-shadow: inset 0 0 0 #333; } 100% { box-shadow: inset 300px 0 0 #333; } }
+   @-moz-keyframes emulator-loading { 0% { box-shadow: inset 0 0 0 #333; } 100% { box-shadow: inset 300px 0 0 #333; } }
+     @-o-keyframes emulator-loading { 0% { box-shadow: inset 0 0 0 #333; } 100% { box-shadow: inset 300px 0 0 #333; } }
+        @keyframes emulator-loading { 0% { box-shadow: inset 0 0 0 #333; } 100% { box-shadow: inset 300px 0 0 #333; } }
+
+#emulator-screen img {
+    margin-top: 2px;
+    position:   absolute;
+}
+
+#emulator-screen p:first-child {
+  margin-top: 10px;
+}
+
+#emulator-screen p:last-child {
+  margin-bottom: 10px;
+}
+
+#emulator-screen p {
+  margin:         0;
+  color:          black;
+  margin-left:    12px;
+  font-family:    'Inconsolata', sans-serif;
+  font-size:      19px;
+  line-height:    19px;
+  height:         19px;
+  white-space:    nowrap;
+  letter-spacing: 0;
+}
+
+#emulator-keyboard {
+  margin:     0 auto;
+  height:     250px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#emulator-keyboard * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#emulator-keyboard .left  { float: left;  }
+#emulator-keyboard .right { float: right; }
+
+#emulator-keyboard table {
+  height:          90%;
+  display:         inline-block;
+  border-collapse: collapse;
+  border-spacing:  0;
+}
+
+#emulator-keyboard table tr {
+    display:      block;
+    margin-right: 2px;
+    width:        245px;
+}
+#emulator-keyboard table td {
+    padding: 8px 10px 8px 7px;
+}
+
+#emulator-keyboard table td:last-child {
+    padding-right: 4;
+}
+
+#emulator-keyboard small {
+  display:        block;
+  font-size:      9px;
+  letter-spacing: 2px;
+  color:          #505050;
+}
+
+#emulator-keyboard button {
+    outline:          none;
+    border:           none;
+    width:            66px;
+    height:           35px;
+    color:            white;
+    font-size:        13px;
+    font-family:      sans-serif;
+    vertical-align:   top;
+    line-height:      12px;
+    background-color: #aaa;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-shadow: inset 0 -4px 1px rgba(0,0,0, .2),
+                inset 0 -3px 2px rgba(0,0,0, .2),
+                inset 0 -4px 3px rgba(255,255,255, .2),
+                inset 0 0px 2px rgba(0,0,0, .3),
+                inset 0 1px 3px rgba(255,255,255, .3),
+                0 0 2px rgba(0,0,0, .5),
+                0 0 4px rgba(0,0,0, .5),
+                0 -4px 8px rgba(255,255,255, .1);
+}
+
+#emulator-keyboard button.btn-number {
+    font-size:   16px;
+    line-height: 14px;
+    padding-top: 3px;
+}
+
+#emulator-keyboard td button {
+    border-radius: 30px 30px 100px 100px;
+}
+
+#emulator-keyboard td:first-child button {
+    border-radius: 50px 30px 100px 80px;
+}
+
+#emulator-keyboard td:last-child button {
+    border-radius: 30px 50px 80px 100px;
+}
+
+#emulator-keyboard button:active {
+    padding-top: 1px !important;
+    box-shadow:  inset 0 -3px 1px rgba(0,0,0, .2),
+                 inset 0 -2px 2px rgba(0,0,0, .2),
+                 inset 0 -3px 3px rgba(255,255,255, .2),
+                 inset 0 0px 2px rgba(0,0,0, .3),
+                 inset 0 1px 3px rgba(255,255,255, .3),
+                 0 0 2px rgba(0,0,0, .5),
+                 0 0 4px rgba(0,0,0, .5),
+                 0 -4px 8px rgba(255,255,255, .1);
+}
+
+#emulator-keyboard button:active.btn-number {
+    background-color: #a0a0a0;
+    padding-top:      4px !important;
+}
+
+#btn-power, #btn-alpha, #btn-cancel, #btn-clear, #btn-enter {
+    padding-top: 0px;
+}
+
+#btn-power      { background-color: #298a43 !important; }
+#btn-power.stop { background-color: #ba453c !important; }
+
+#btn-alpha  { background-color: #3c57ba !important; }
+#btn-cancel { background-color: #ba453c !important; }
+#btn-clear  { background-color: #e5b723 !important; }
+#btn-enter  { background-color: #298a43 !important; }
+
+#btn-power:active      { background-color: #1d8037 !important; }
+#btn-power:active.stop { background-color: #af382f !important; }
+
+#btn-alpha:active  { background-color: #3049a5 !important; }
+#btn-cancel:active { background-color: #af382f !important; }
+#btn-clear:active  { background-color: #d4a81a !important; }
+#btn-enter:active  { background-color: #1d8037 !important; }

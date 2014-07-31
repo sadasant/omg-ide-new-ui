@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="css/help.css"/>
 	<link rel="stylesheet" href="css/tabs.css"/>
 	<link rel="stylesheet" href="css/editor.css"/>
+	<link rel="stylesheet" href="css/emulator.css"/>
+	<link rel="stylesheet" href="css/walkemulator.css"/>
 </head>
 <body>
 
@@ -169,6 +171,63 @@
 					<textarea class="scroll-x"></textarea>
 					<button><div class="entypo-reply"></div></button>
 				</div>
+			</div>
+
+			<div class="content content-Emulate" id="emulator">
+				<!-- THIS IS FROM THE EMULATOR REPO -->
+				<div class="emulator-container-container">
+					<div id="emulator-container">
+						<div id="emulator-paper-container">
+							<div id="emulator-paper">
+								<div id="emulator-paper-content"></div>
+							</div>
+							<div id="emulator-printer-cut">cut</div>
+						</div>
+						<div id="emulator-body">
+							<div id="emulator-printer"></div>
+							<div id="emulator-screen">
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+							</div>
+							<div id="emulator-keyboard">
+								<table>
+									<tr>
+										<td><button id="btn-power">POWER</button></td>
+										<td><button id="btn-alpha">ALPHA</small></button></td>
+										<td><button id="btn-clear">CLEAR</button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-1" class="btn-number">1<small>QZ.,</small></button></td>
+										<td><button id="btn-2" class="btn-number">2<small>ABC</small></button></td>
+										<td><button id="btn-3" class="btn-number">3<small>DEF</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-4" class="btn-number">4<small>GHI</small></button></td>
+										<td><button id="btn-5" class="btn-number">5<small>JKL</small></button></td>
+										<td><button id="btn-6" class="btn-number">6<small>MNO</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-7" class="btn-number">7<small>PRS</small></button></td>
+										<td><button id="btn-8" class="btn-number">8<small>TUV</small></button></td>
+										<td><button id="btn-9" class="btn-number">9<small>WXY</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-cancel">CANCEL</button></td>
+										<td><button id="btn-0" class="btn-number">0<small>'*#-_</small></button></td>
+										<td><button id="btn-enter">ENTER</button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- THE CODE ABOVE IS FROM THE EMULATOR REPO -->
 			</div>
 
 			<div class="content content-Logs" id="logs">
