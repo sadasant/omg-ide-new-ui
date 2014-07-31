@@ -1,12 +1,22 @@
 #tabs {
     width:         100%;
     background:    #37a;
-    height:        30px;
+    height:        32px;
     position:      absolute;
     top:           0;
     left:          50px;
     overflow:      hidden;
-    border-bottom: 2px solid #e8e8e8;
+}
+
+#tabs:after {
+    content:    '';
+    background: #e8e8e8;
+    position:   absolute;
+    width:      100%;
+    height:     2px;
+    left:       0;
+    top:        30px;
+    z-index:    1;
 }
 
 #tabs > .tab {
