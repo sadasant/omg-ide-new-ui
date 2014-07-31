@@ -1,0 +1,36 @@
+/* From: http://weloveiconfonts.com/ */
+@import url(entypo/api.css);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+/* tooltip */
+[class*="entypo-"]:hover .tooltip-right {
+    display: block;
+    z-index: 10;
+}
+[class*="entypo-"] .tooltip-right:before {
+    content:      "";
+    position:     absolute;
+    margin-left:  -20px;
+    margin-top:   2px;
+    width:        0;
+    height:       0;
+    border-style: solid;
+    border-width: 8px 10px 8px 0;
+    border-color: transparent rgba(0,0,0,.9) transparent transparent;
+}
+[class*="entypo-"] .tooltip-right {
+    display:       none;
+    background:    rgba(0,0,0,.9);
+    color:         white;
+    border-radius: 2px;
+    position:      absolute;
+    margin-left:   50px;
+    margin-top:    -39px;
+    padding:       5px 10px;
+    font-size:     14px;
+    line-height:   21px;
+}

@@ -1,0 +1,18 @@
+#emulator:not(.popup) .emulator-container-container {
+    margin-top:  20px;
+    margin-left: 3px;
+}
+
+#emulator.popup .emulator-container-container {
+    margin-top: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 100%;
+}
+
+#emulator.popup {
+    max-height: 85%;
+    max-width:  280px;
+    min-width:  280px;
+    width:      280px;
+}

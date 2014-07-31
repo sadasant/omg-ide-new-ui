@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>CloudWalk IDE</title>
+	<meta name="description" content="Web-based IDE for CloudWalk. Features include autocomplete, real-time collaboration, emulation, instant deploy and more.">
+	<meta name="author" content="cloudwalk.io">
+
+	<link href="img/favicon.png" rel="icon" type="image/png">
+
+	<link rel="stylesheet" href="css/reset.css"/>
+	<link rel="stylesheet" href="css/entypo.css"/>
+	<link rel="stylesheet" href="css/etc.css"/>
+	<link rel="stylesheet" href="css/leftblock.css"/>
+	<link rel="stylesheet" href="css/projects.css"/>
+	<link rel="stylesheet" href="css/chat.css"/>
+	<link rel="stylesheet" href="css/logs.css"/>
+	<link rel="stylesheet" href="css/help.css"/>
+	<link rel="stylesheet" href="css/tabs.css"/>
+	<link rel="stylesheet" href="css/editor.css"/>
+	<link rel="stylesheet" href="css/emulator.css"/>
+	<link rel="stylesheet" href="css/walkemulator.css"/>
+</head>
+<body>
+
+	<div id="loading">
+		<div id="loading-animation" class="entypo-cloud-thunder"></div>
+	</div>
+
+	<div id="left-block">
+
+		<div id="left-bar">
+			<div class="left-bar-logo"></div>
+
+			<div class="entypo-user">
+				<div class="tooltip-right">Profile</div>
+			</div>
+
+			<div class="entypo-briefcase">
+				<div class="tooltip-right">Company</div>
+			</div>
+
+			<div class="entypo-book">
+				<div class="tooltip-right">Projects</div>
+			</div>
+
+			<div class="entypo-cog">
+				<div class="tooltip-right">Settings</div>
+			</div>
+
+			<br>
+
+			<div class="entypo-comment">
+				<div class="tooltip-right">Chat</div>
+			</div>
+
+			<br>
+
+			<div class="entypo-check" id="compile">
+				<div class="tooltip-right">Compile</div>
+			</div>
+
+			<div class="entypo-mobile">
+				<div class="tooltip-right">Emulate</div>
+			</div>
+
+			<div class="entypo-docs" id="open-logs">
+				<div class="tooltip-right">Logs</div>
+			</div>
+
+			<div class="entypo-upload-cloud" id="deploy">
+				<div class="tooltip-right">Deploy</div>
+			</div>
+
+			<br>
+
+			<div class="entypo-help">
+				<div class="tooltip-right">Help</div>
+			</div>
+
+		</div>
+
+		<div id="left-panel">
+
+			<div class="entypo-popup"></div>
+
+			<div class="content content-Profile">
+				<div class="title">Profile</div>
+			</div>
+
+			<div class="content content-Company">
+				<div class="title">Company</div>
+			</div>
+
+			<div class="content content-Projects" id="projects">
+				<div class="title">Projects</div>
+				<div class="browser scroll-x scroll-y">
+					<div class="project">
+						<div class="entypo-doc-text"></div>
+						recargaapp.posxml
+					</div>
+					<div class="project">
+						<div class="entypo-doc-text"></div>
+						helloworld.posxml
+					</div>
+					<div class="project">
+						<div class="entypo-plus"></div>
+						<div class="entypo-folder"></div>
+						Recarga PAX
+						<div class="childs">
+							<div class="project">
+								<div class="entypo-doc-text"></div>
+								nothing_here_yet.rb
+							</div>
+						</div>
+					</div>
+					<div class="project open">
+						<div class="entypo-minus"></div>
+						<div class="entypo-folder"></div>
+						Example App
+						<div class="childs">
+							<div class="project active"><!--
+							--><div class="entypo-doc-text"></div><!--
+							--><div class="open"><div class="entypo-pencil"></div></div><!--
+							-->example.rb<!--
+						--></div>
+							<div class="project"><!--
+							--><div class="entypo-doc-text"></div><!--
+							--><div class="open"><div class="entypo-pencil"></div></div><!--
+							-->example2.rb<!--
+						--></div>
+							<div class="project"><!--
+							--><div class="entypo-doc-text"></div><!--
+							--><div class="open"><div class="entypo-pencil"></div></div><!--
+							-->example3_with_a_really_big_name.rb<!--
+						--></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content content-Settings">
+				<div class="title">Settings</div>
+			</div>
+
+			<div class="content content-Chat" id="chat">
+				<div class="active-users no-select">
+					<ul>
+						<li class="you"><div class="bullet" style="background-color:#33f;"></div><div class="position">Line 5, column 5.</div></li>
+						<li>            <div class="bullet" style="background-color:#f33;"></div><div class="position">Line 3, column 10.</div></li>
+						<li>            <div class="bullet" style="background-color:#3f3;"></div><div class="position">Line 21, column 0.</div></li>
+					</ul>
+				</div>
+				<div class="conversation select scroll-y scroll-x">
+					<div class="message select" style="border-left-color:#33f;">Hey!</div>
+					<div class="message select" style="border-left-color:#3f3;">Hey brotha!</div>
+					<div class="message select" style="border-left-color:#f33;">How are you, guys?</div>
+					<div class="message select" style="border-left-color:#3f3;">Everything ok here</div>
+					<div class="message select" style="border-left-color:#3f3;">:D</div>
+					<div class="message select" style="border-left-color:#33f;">All good!</div>
+					<div class="message select" style="border-left-color:#f33;">Perfect!</div>
+				</div>
+				<div class="submit-form">
+					<textarea class="scroll-x"></textarea>
+					<button><div class="entypo-reply"></div></button>
+				</div>
+			</div>
+
+			<div class="content content-Emulate" id="emulator">
+				<!-- THIS IS FROM THE EMULATOR REPO -->
+				<div class="emulator-container-container">
+					<div id="emulator-container">
+						<div id="emulator-paper-container">
+							<div id="emulator-paper">
+								<div id="emulator-paper-content"></div>
+							</div>
+							<div id="emulator-printer-cut">cut</div>
+						</div>
+						<div id="emulator-body">
+							<div id="emulator-printer"></div>
+							<div id="emulator-screen">
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+							</div>
+							<div id="emulator-keyboard">
+								<table>
+									<tr>
+										<td><button id="btn-power">POWER</button></td>
+										<td><button id="btn-alpha">ALPHA</small></button></td>
+										<td><button id="btn-clear">CLEAR</button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-1" class="btn-number">1<small>QZ.,</small></button></td>
+										<td><button id="btn-2" class="btn-number">2<small>ABC</small></button></td>
+										<td><button id="btn-3" class="btn-number">3<small>DEF</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-4" class="btn-number">4<small>GHI</small></button></td>
+										<td><button id="btn-5" class="btn-number">5<small>JKL</small></button></td>
+										<td><button id="btn-6" class="btn-number">6<small>MNO</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-7" class="btn-number">7<small>PRS</small></button></td>
+										<td><button id="btn-8" class="btn-number">8<small>TUV</small></button></td>
+										<td><button id="btn-9" class="btn-number">9<small>WXY</small></button></td>
+									</tr>
+									<tr>
+										<td><button id="btn-cancel">CANCEL</button></td>
+										<td><button id="btn-0" class="btn-number">0<small>'*#-_</small></button></td>
+										<td><button id="btn-enter">ENTER</button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- THE CODE ABOVE IS FROM THE EMULATOR REPO -->
+			</div>
+
+			<div class="content content-Logs" id="logs">
+				<ul class="tabs no-select">
+					<li class="active" title="IDE"   >IDE</li>
+					<li                title="Switch">Switch</li>
+				</ul>
+				<ul class="logs-content-ide select scroll-y scroll-x link-scroll active">
+					<li>Welcome to CloudWalk IDE!</li>
+				</ul>
+				<ul class="logs-content-switch select scroll-y scroll-x link-scroll">
+					<li>The Switch's Logs</li>
+				</ul>
+			</div>
+
+			<div class="content content-Help" id="help">
+				<ul class="tabs no-select">
+					<li class="active" title="Shortcuts">Shortcuts</li>
+					<li                title="POSXML"   >POSXML</li>
+					<li                title="Ruby"     >Ruby</li>
+				</ul>
+				<div class="help-content-shortcuts select scroll-y scroll-x link-scroll active">
+					<p>
+						Below there is the list of custom keybindings
+						for our <b>CloudWalk IDE</b> product, for more
+						keybindings, please visit
+						<a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">this website</a>.
+					</p>
+					<table>
+						<tr>
+							<th style="width:20%;">Shortcut</th>
+							<th style="width:80%;">Action</th>
+						</tr>
+						<tr>
+							<td>Ctrl-b</td>
+							<td>Compile the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-d</td>
+							<td>Deploy the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-e</td>
+							<td>Emulate the code.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-h</td>
+							<td>Fold or unfold the nearest fold.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-j</td>
+							<td>Fold or unfold all the folds.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-m</td>
+							<td>Toggle the terminal panel.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-y <br>Command-y</td>
+							<td>Toggle the apps panel.</td>
+						</tr>
+						<tr>
+							<td>Ctrl-/ <br>Command-/</td>
+							<td>Toggle comments.</td>
+						</tr>
+					</table>
+				</div>
+				<div class="help-content-posxml select scroll-y scroll-x link-scroll">
+					<p>
+						To understand how to work with the <b>POSXML language</b>, please access the following links: <br><br>
+						<a href="https://docs.cloudwalk.io/en/posxml/structure"            target="_blank">Language structure</a><br>
+						<a href="https://docs.cloudwalk.io/en/posxml/memory-and-variables" target="_blank">Variables and memory</a><br>
+						<a href="https://docs.cloudwalk.io/en/posxml/configuration"        target="_blank">Configuration</a><br><br>
+						You might also find useful the following list of commands:
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/if" target="_blank">if</a></b><br>
+								Instruction of decision making or logical comparison
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/else" target="_blank">else</a></b><br>
+								Logical condition in a block of the if statement
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/while" target="_blank">while</a></b><br>
+								Instruction that allows the execution of a code multiple times
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/break" target="_blank">break</a></b><br>
+								The break command allows immediate exit from while loop
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/function" target="_blank">function</a></b><br>
+								Defines a block of code that can be executed later
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/callfunction" target="_blank">callfunction</a></b><br>
+								Makes a call on a previously defined function
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/execute" target="_blank">execute</a></b><br>
+								Execute a POSXML application stored on the device
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/exit" target="_blank">exit</a></b><br>
+								Immediately closes the execution of the POSXML application
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/getcardvariable" target="_blank">getcardvariable</a></b><br>
+								Gets the card number and stores it directly on a variable
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.readcard" target="_blank">system.readcard</a></b><br>
+								Waits until a card is passed or a key is pressed
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.inputtransaction" target="_blank">system.inputtransaction</a></b><br>
+								Instruction to receive the data card on a contactless transaction
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/menu" target="_blank">menu</a></b><br>
+								Displays a menu based on the device screen (number of lines
+								)</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/menuwithheader" target="_blank">menuwithheader</a></b><br>
+								Displays a header with a menu based on the device screen (number of lines
+								)</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/displaybitmap" target="_blank">displaybitmap</a></b><br>
+								Displays a monochromatic bitmap on the display
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/display" target="_blank">display</a></b><br>
+								Displays a custom message on device's display
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/cleandisplay" target="_blank">cleandisplay</a></b><br>
+								Clean the device display (like a clear or cls)
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.gettouchscreen" target="_blank">system.gettouchscreen</a></b><br>
+								Captures the coordinates (x and y) where the display was pressed
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/print" target="_blank">print</a></b><br>
+								Prints a custom message in the default font size
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/printbig" target="_blank">printbig</a></b><br>
+								Prints a custom message in the double font size
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/printbitmap" target="_blank">printbitmap</a></b><br>
+								Prints a monochromatic bitmap
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/printbarcode" target="_blank">printbarcode</a></b><br>
+								Prints a bar code in the I25 format, horizontal or vertical
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/checkpaperout" target="_blank">checkpaperout</a></b><br>
+								Checks if the paper compartment still contains paper
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/paperfeed" target="_blank">paperfeed</a></b><br>
+								Sends a signal to the printer by adding blank lines on the ticket
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inputfloat" target="_blank">inputfloat</a></b><br>
+								Allows the entry of a value with dot (.) by pressing (*)
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inputformat">inputformat</a></b><br>
+								Allows the entry of a value based on a pre-defined format
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inputinteger">inputinteger</a></b><br>
+								Allows the entry of an integer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inputoption">inputoption</a></b><br>
+								Allows the entry of an integer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inputmoney">inputmoney</a></b><br>
+								Allows the entry of a monetary value
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/crypto.crc">crypto.crc</a></b><br>
+								16-bit CRC calculation, support CRC-CCITT
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/crypto.encryptdecrypt">crypto.encryptdecrypt</a></b><br>
+								Encryption routines with algorithms DES, 3DES or NEWDES
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/crypto.lrc">crypto.lrc</a></b><br>
+								Generates a LRC byte of the string in the buffer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/crypto.xor">crypto.xor</a></b><br>
+								Performs a binary XOR operation between the bytes of two strings
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/downloadfile">downloadfile</a></b><br>
+								Downloads a file previously registered on the WALK Manager
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/filesystem.filesize">filesystem.filesize</a></b><br>
+								Returns the size of a file in the memory of the POS
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/filesystem.listfiles">filesystem.listfiles</a></b><br>
+								Lists the files of a directory by saving them in a file
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/filesystem.space">filesystem.space</a></b><br>
+								Checks the space (free and used) and the number of files in memory
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/file.open">file.open</a></b><br>
+								Opens a file for reading or writing
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/file.close">file.close</a></b><br>
+								Closes a file that was previously opened by file.open
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/file.read">file.read</a></b><br>
+								Reads a file that was previously opened by file.open
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/file.write">file.write</a></b><br>
+								Writes a file that was previously opened by file.open
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/readfile">readfile</a></b><br>
+								Reads a dbfile WALK file (key/value
+								)</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/readfilebyindex">readfilebyindex</a></b><br>
+								Reads a key from a file WALK dbfile
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/editfile">editfile</a></b><br>
+								Allows write a file in WALK dbfile format (key/value)
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/deletefile">deletefile</a></b><br>
+								Deletes a file from the device memory
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.initfieldtable">iso8583.initfieldtable</a></b><br>
+								Starts field table ISO8583 based on a specified file
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.initmessage">iso8583.initmessage</a></b><br>
+								Initiates assembly of the ISO message
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.putfield">iso8583.putfield</a></b><br>
+								Inserts a field in the message, necessarily in ascending order
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.endmessage">iso8583.endmessage</a></b><br>
+								Ends assembly of the ISO message
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.transactmessage">iso8583.transactmessage</a></b><br>
+								Adds size, header and trailer and sends the ISO message to the authorizer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.analyzemessage">iso8583.analyzemessage</a></b><br>
+								Starts the process of analysis and decomposition of the fields of the message
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/iso8583.getfield">iso8583.getfield</a></b><br>
+								Extracts a field of the previously analyzed message
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/openserialport">openserialport</a></b><br>
+								Opens the serial port for communication with external peripherals
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/writeserialport">writeserialport</a></b><br>
+								Writes a buffer on the serial port
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/readserialport">readserialport</a></b><br>
+								Reads a buffer from an external device captured by the serial port
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/closeserialport">closeserialport</a></b><br>
+								Closes the serial port
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/getdatetime">getdatetime</a></b><br>
+								Stores in a variable date and time at runtime
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/time.calculate">time.calculate</a></b><br>
+								Calculates time. Supports addition, subtraction and difference
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/adjustdatetime">adjustdatetime</a></b><br>
+								Updates the device internal clock
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/predial">predial</a></b><br>
+								Performs a dial-up connection with the provider
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/preconnect">preconnect</a></b><br>
+								Connects to the host authorizer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.start">network.start</a></b><br>
+								Starts the device's modem.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/shutdownmodem">shutdownmodem</a></b><br>
+								Turns off the modem and cancels the operations
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.checkgprssignal">network.checkgprssignal</a></b><br>
+								Checks the status of the connection, if the POS supports GPRS
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.hostdisconnect">network.hostdisconnect</a></b><br>
+								Disconnects the device from the host, keeping it connected to the network
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.ping">network.ping</a></b><br>
+								Checks the status of the connection with the host
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.send">network.send</a></b><br>
+								Sends a buffer to the host previously connected
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/network.receive">network.receive</a></b><br>
+								Receives from the host buffer previously connected
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.open">pinpad.open</a></b><br>
+								Enables communication with the external or internal pinpad
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.loadipek">pinpad.loadipek</a></b><br>
+								Records an initial key and an initial ksn on the memory of pinpad
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.getkey">pinpad.getkey</a></b><br>
+								Captures a key that is pressed on the external pinpad
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.getpindukpt">pinpad.getpindukpt</a></b><br>
+								Catches a PIN and encrypts it using DUKPT standard
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.display">pinpad.display</a></b><br>
+								Displays a custom message on the display of the pinpad
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/pinpad.close">pinpad.close</a></b><br>
+								Terminates communication with the external or internal pinpad
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.open">emv.open</a></b><br>
+								Initializes EMV library
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.loadtables">emv.loadtables</a></b><br>
+								load tables EMV and PKI of the file for the buyer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.cleanstructures">emv.cleanstructures</a></b><br>
+								Clears all input and output parameters
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.adddata">emv.adddata</a></b><br>
+								Adds parameters to EMV process
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.getinfo">emv.getinfo</a></b><br>
+								Returns information parameters after the execution of the EMV process
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.inittransaction">emv.inittransaction</a></b><br>
+								Initializes the EMV process with inserted parameters
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.processtransaction">emv.processtransaction</a></b><br>
+								Starts the execution of the EMV process
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.finishtransaction">emv.finishtransaction</a></b><br>
+								Terminates the execution of the EMV process
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.removecard">emv.removecard</a></b><br>
+								Waits for card removal
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/emv.settimeout">emv.settimeout</a></b><br>
+								Define timeout (in seconds) of the library of the EMV process
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.readcard">system.readcard</a></b><br>
+								Waits until a card is passed or a key is pressed
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.inputtransaction">system.inputtransaction</a></b><br>
+								Instruction to receive the data card on a contactless transaction
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/integervariable">integervariable</a></b><br>
+								Creates an instance of the variable of integer type
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/stringvariable">stringvariable</a></b><br>
+								Creates an instance of the variable of string type
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/integerconvert">integerconvert</a></b><br>
+								Conversion from integer to binary, octal or hexadecimal
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/convert.toint">convert.toint</a></b><br>
+								Converts binary, decimal or hexadecimal to integer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/inttostring">inttostring</a></b><br>
+								Conversion from integer to string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/stringtoint">stringtoint</a></b><br>
+								Conversion from string to integer
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/integeroperator">integeroperator</a></b><br>
+								Increases by 1 (+1) or decrements by 1 (-1) a variable of integer type
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.tohex">string.tohex</a></b><br>
+								Converts a string to its hexadecimal representation
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.fromhex">string.fromhex</a></b><br>
+								Converts a hexadecimal representation to a string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.charat">string.charat</a></b><br>
+								Extracts specified string character
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.elementat">string.elementat</a></b><br>
+								Returns a specific element in the string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.elements">string.elements</a></b><br>
+								Returns how many elements there are in the specified string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.find">string.find</a></b><br>
+								Searches for a substring in the specified string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.getvaluebykey">string.getvaluebykey</a></b><br>
+								Searches in the string for a value based on key/value
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.trim">string.trim</a></b><br>
+								Eliminates the blanks on the left and right of the string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.insertat">string.insertat</a></b><br>
+								Inserts an element at specific index in string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.length">string.length</a></b><br>
+								Returns length of the specified string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.pad">string.pad</a></b><br>
+								Adds a padding with specific character in string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.removeat">string.removeat</a></b><br>
+								Removes an element from specific index in string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.replace">string.replace</a></b><br>
+								Replace all occurrences of the specified substring
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.replaceat">string.replaceat</a></b><br>
+								Replaces an element at a specific index in string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/string.substring">string.substring</a></b><br>
+								Capture a specific part of string
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/substring">substring</a></b><br>
+								Copies part of a variable string to another variable
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/joinstring">joinstring</a></b><br>
+								Concatenates in a string the value of another 2 strings
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/input.getvalue">input.getvalue</a></b><br>
+								Captures a string and displays it on the screen in any position
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/smartcard.insertedcard">smartcard.insertedcard</a></b><br>
+								Checks if the card is inserted in the smart card reader
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/smartcard.closereader">smartcard.closereader</a></b><br>
+								Terminates communication process of with the smart card
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/smartcard.startreader">smartcard.startreader</a></b><br>
+								Starts the smart card reader and try to start the card
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/smartcard.transmitapdu">smartcard.transmitapdu</a></b><br>
+								Sends an APDU command to the smart card
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/mathematicaloperation">mathematicaloperation</a></b><br>
+								Performs a mathematical operation between two values
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.backlight">system.backlight</a></b><br>
+								Define the device's backlight intensity level.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.qrcode">system.qrcode</a></b><br>
+								Generate a QR Code based on the entered data
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.beep">system.beep</a></b><br>
+								Produces a short beep
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.checkbattery">system.checkbattery</a></b><br>
+								Checks the device battery status
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.info">system.info</a></b><br>
+								Gets device information (MAC Address, SIM ID, etc)
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/system.restart">system.restart</a></b><br>
+								Restarts the device
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/unzipfile">unzipfile</a></b><br>
+								Unpacks a zip file
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/waitkey">waitkey</a></b><br>
+								Pauses execution until a button is pressed
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/waitkeytimeout">waitkeytimeout</a></b><br>
+								Same as command waitkey but has a timeout
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/readkey">readkey</a></b><br>
+								Same as command waitkey, but holds the pressed key
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<b><a href="https://docs.cloudwalk.io/en/posxml/commands/wait">wait</a></b><br>
+								Pauses execution for a set time
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="help-content-ruby select scroll-y scroll-x link-scroll">
+					<p>
+						Click on the following link to acces the docs: <br><br>
+						<a href="https://docs.cloudwalk.io/en/posxml/commands#commands-list" target="_blank">Ruby Framework</a>
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="tabs" class="no-select">
+		<div class="tab active" title="example.rb">
+			<div class="text">example.rb</div>
+			<div class="x">✖</div>
+		</div>
+		<div class="tab" title="example2.rb">
+			<div class="text">example2.rb</div>
+			<div class="x">✖</div>
+		</div>
+		<div class="tab" title="example3_with_a_really_big_name.rb">
+			<div class="text">example3_with_a_really_big_name.rb</div>
+			<div class="x">✖</div>
+		</div>
+	</div>
+
+	<div id="editor_wrapper">
+		<div id="editor"></div>
+		<div id="bottom_bar"></div>
+	</div>
+
+	<script src="js/lib/jquery.js"></script>
+	<script src="js/lib/ace.js"></script>
+
+	<script src="js/leftblock.js"></script>
+	<script src="js/editor.js"></script>
+	<script src="js/tabs.js"></script>
+	<script src="js/projects.js"></script>
+	<script src="js/chat.js"></script>
+	<script src="js/logs.js"></script>
+	<script src="js/help.js"></script>
+	<script src="js/ended_loading.js"></script>
+</body>
+</html>
