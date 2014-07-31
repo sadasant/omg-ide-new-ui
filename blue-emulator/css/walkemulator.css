@@ -344,7 +344,7 @@
 
 #emulator-keyboard button:active.btn-number {
     background-color: #90a6ba;
-    padding-top:      4px !important;
+    padding-top:      6px !important;
 }
 
 #btn-power, #btn-alpha, #btn-cancel, #btn-clear, #btn-enter {
