@@ -419,7 +419,7 @@ $(window).ready(function() {
             var popup_height = height - mouse.y + y;
 
             var do_y = popup_height >= min_height &&
-                       (popup_height <= $window.height()*0.8 ||
+                       (popup_height <= $window.height()*0.85 ||
                        popup_height < $popup.height());
 
             if (!do_y) return;
@@ -474,7 +474,7 @@ $(window).ready(function() {
             var popup_height = height + mouse.y - y;
 
             var do_y = popup_height >= min_height &&
-                       (popup_height <= $window.height()*0.8 ||
+                       (popup_height <= $window.height()*0.85 ||
                        popup_height < $popup.height());
 
             if (!do_y) return;
@@ -528,7 +528,7 @@ $(window).ready(function() {
             var popup_width = width + mouse.x - x;
 
             var do_x = popup_width >= min_width &&
-                       (popup_width <= $window.width()*0.8 ||
+                       (popup_width <= $window.width()*0.85 ||
                        popup_width < $popup.width());
 
             if (!do_x) return;
@@ -584,7 +584,7 @@ $(window).ready(function() {
             var popup_width = width - mouse.x + x;
 
             var do_x = popup_width >= min_width &&
-                       (popup_width <= $window.width()*0.8 ||
+                       (popup_width <= $window.width()*0.85 ||
                        popup_width < $popup.width());
 
             if (!do_x) return;
